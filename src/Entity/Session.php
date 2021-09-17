@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\SessionRepository;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,34 +18,34 @@ class Session
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="object")
      */
-    private $workout;
+    private Workout $workout;
 
     /**
      * @ORM\Column(type="array")
      */
-    private $users = [];
+    private array $users = [];
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $startTime;
+    private DateTimeInterface $startTime;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $endTime;
+    private DateTimeInterface $endTime;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getWorkout()
+    public function getWorkout(): Workout
     {
         return $this->workout;
     }
@@ -68,24 +69,24 @@ class Session
         return $this;
     }
 
-    public function getStartTime(): ?\DateTimeInterface
+    public function getStartTime(): ?DateTimeInterface
     {
         return $this->startTime;
     }
 
-    public function setStartTime(\DateTimeInterface $startTime): self
+    public function setStartTime(DateTimeInterface $startTime): self
     {
         $this->startTime = $startTime;
 
         return $this;
     }
 
-    public function getEndTime(): ?\DateTimeInterface
+    public function getEndTime(): ?DateTimeInterface
     {
         return $this->endTime;
     }
 
-    public function setEndTime(\DateTimeInterface $endTime): self
+    public function setEndTime(DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
 

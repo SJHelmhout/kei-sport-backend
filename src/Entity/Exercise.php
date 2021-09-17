@@ -17,32 +17,32 @@ class Exercise
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $equipment;
+    private ?string $equipment;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $reps;
+    private ?int $reps;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $duration;
+    private ?int $duration;
 
     /**
      * @ORM\Column(type="object", nullable=true)
      */
-    private $device;
+    private Device $device;
 
     public function getId(): ?int
     {
@@ -97,7 +97,7 @@ class Exercise
         return $this;
     }
 
-    public function getDevice()
+    public function getDevice(): Device
     {
         return $this->device;
     }
