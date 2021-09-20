@@ -47,6 +47,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private ?string $color;
 
+    /**
+     *
+     */
+    private ?string $plainPassword;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -156,6 +161,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setColor(?string $color): self
     {
         $this->color = $color;
+
+        return $this;
+    }
+
+    public function getPlainPassword(): ?string
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword(string $plainPassword): self
+    {
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
