@@ -41,7 +41,7 @@ class UserCreateCommand extends Command
 
         $question = new Question('What is the password?');
         $output->writeln('');
-        $question->setHidden(true);
+        $question->setHidden(false);
         $question->setHiddenFallback(false);
 
         $password = $helper->ask($input, $output, $question);
@@ -50,10 +50,14 @@ class UserCreateCommand extends Command
         $roles = explode(',', $helper->ask($input, $output, $question));
         $roles[] = 'ROLE_USER';
 
+        $question = new Question('What is your name?');
+        $name = $helper->ask($input, $output, $question);
+
         $user = (new User())
             ->setEmail($email)
             ->setPlainPassword($password)
             ->setRoles($roles)
+            ->setName($name)
         ;
         $this->entityManager->persist($user);
         $this->entityManager->flush();

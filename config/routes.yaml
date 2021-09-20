@@ -10,3 +10,7 @@ login:
   path:       /login
   controller: App\Controller\SecurityController::login
   methods: POST
+
+# Refresh route
+#gesdinet_jwt_refresh_token:
+#  path: /api/token/refresh
