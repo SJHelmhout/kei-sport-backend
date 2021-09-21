@@ -5,4 +5,4 @@ lexik_jwt_authentication:
     # TODO: Test JWT Authentication op API via POSTMAN
     # TODO: Zorg dat de JWT Token opgeslagen wordt
     # TODO: Zorg er voor dat de JWT Authentication slechts op een deel van de API werkt
-    # token_ttl: 3600
+    token_ttl: 3600
