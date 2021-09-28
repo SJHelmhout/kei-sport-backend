@@ -50,7 +50,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      *
      */
-    private ?string $plainPassword;
+    private ?string $plainPassword = '';
 
     public function getId(): ?int
     {
