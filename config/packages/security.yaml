@@ -60,5 +60,6 @@ security:
 #        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
         - { path: ^/api,       roles: PUBLIC_ACCESS }
 
+
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

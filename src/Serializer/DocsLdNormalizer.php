@@ -4,22 +4,24 @@
 namespace App\Serializer;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
-use ApiPlatform\Core\Api\IriConverterInterface;
+//use ApiPlatform\Core\Api\IriConverterInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
+//use ApiPlatform\Core\Metadata\Resource\Factory\ResourceMetadataFactoryInterface;
 use ApiPlatform\Core\Metadata\Resource\ResourceNameCollection;
 use App\Exception\Hydra\HydraResourceMismatchException;
 use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Inflector\Inflector;
+//use Doctrine\Common\Inflector\Inflector;
+use Symfony\Component\String\Inflector\EnglishInflector;
 use Doctrine\ORM\Mapping\Column;
-use Doctrine\Common\Persistence\ManagerRegistry;
+//use Doctrine\Common\Persistence\ManagerRegistry;
+//use Symfony\Bridge\Doctrine\ManagerRegistry;
 use ReflectionClass;
 use ReflectionException;
 use ReflectionProperty;
-use Symfony\Component\Routing\RouterInterface;
+//use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Validator\Constraints\Choice;
@@ -34,49 +36,35 @@ class DocsLdNormalizer implements NormalizerInterface
         Choice::class => ['choices'],
     ];
 
-    private $decorated;
-    /**
-     * @var IriConverterInterface
-     */
-    private $iriConverter;
-    /**
-     * @var RouterInterface
-     */
-    private $router;
-    /**
-     * @var ResourceMetadataFactoryInterface
-     */
-    private $resourceMetadataFactory;
-    /**
-     * @var ManagerRegistry
-     */
-    private $managerRegistry;
+    private NormalizerInterface $decorated;
     /**
      * @var AnnotationReader
      */
-    private $annotationReader;
+    private AnnotationReader $annotationReader;
+    private EnglishInflector $inflector;
 
     /**
      * DocsLdNormalizer constructor.
      * @param NormalizerInterface $decorated
-     * @param IriConverterInterface $iriConverter
-     * @param RouterInterface $router
-     * @param ResourceMetadataFactoryInterface $resourceMetadataFactory
-     * @param ManagerRegistry $managerRegistry
+//     * @param IriConverterInterface $iriConverter
+//     * @param RouterInterface $router
+//     * @param ResourceMetadataFactoryInterface $resourceMetadataFactory
+//     * @param ManagerRegistry $managerRegistry
      */
     public function __construct(
-        NormalizerInterface $decorated,
-        IriConverterInterface $iriConverter,
-        RouterInterface $router,
-        ResourceMetadataFactoryInterface $resourceMetadataFactory,
-        ManagerRegistry $managerRegistry
+        NormalizerInterface $decorated
+//        IriConverterInterface $iriConverter,
+//        RouterInterface $router,
+//        ResourceMetadataFactoryInterface $resourceMetadataFactory
+//        ManagerRegistry $managerRegistry
     ) {
         $this->decorated = $decorated;
-        $this->iriConverter = $iriConverter;
-        $this->router = $router;
-        $this->resourceMetadataFactory = $resourceMetadataFactory;
-        $this->managerRegistry = $managerRegistry;
+//        $this->iriConverter = $iriConverter;
+//        $this->router = $router;
+//        $this->resourceMetadataFactory = $resourceMetadataFactory;
+//        $this->managerRegistry = $managerRegistry;
         $this->annotationReader = new AnnotationReader();
+        $this->inflector = new EnglishInflector();
     }
 
     /**
@@ -166,7 +154,7 @@ class DocsLdNormalizer implements NormalizerInterface
                         $filters['searchable'][] = $property;
                     }
                 }
-                continue;
+//                continue;
             }
             //for now: support of custom filters is dropped. Info: Jira SV-6.
 
@@ -239,14 +227,15 @@ class DocsLdNormalizer implements NormalizerInterface
     {
         $nameConverter = new CamelCaseToSnakeCaseNameConverter();
         $snakeCaseResourceName = $nameConverter->normalize($resourceName);
-        $pluralizedResourceName = Inflector::pluralize($snakeCaseResourceName);
+//        $pluralizedResourceName = Inflector::pluralize($snakeCaseResourceName);
+        $pluralizedResourceName = $this->inflector->pluralize($snakeCaseResourceName);
         return '/' . $pluralizedResourceName;
     }
 
     /**
      * @inheritDoc
      */
-    public function supportsNormalization($data, string $format = null)
+    public function supportsNormalization($data, string $format = null): bool
     {
         return $this->decorated->supportsNormalization($data, $format);
     }

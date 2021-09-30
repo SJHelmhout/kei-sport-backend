@@ -28,3 +28,8 @@ services:
     App\EventSubscriber\Doctrine\:
         resource: '../src/EventSubscriber/Doctrine'
         tags: [ 'doctrine.event_subscriber' ]
+
+    # Used to automatically add endpoints to resources for json-ld docs
+    App\Serializer\DocsLdNormalizer:
+        decorates: 'api_platform.hydra.normalizer.documentation'
+        arguments: [ '@App\Serializer\DocsLdNormalizer.inner']
