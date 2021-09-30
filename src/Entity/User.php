@@ -48,9 +48,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $color;
 
     /**
-     *
+     * User's password before hashing
      */
-    private ?string $plainPassword;
+    private ?string $plainPassword = '';
 
     public function getId(): ?int
     {
