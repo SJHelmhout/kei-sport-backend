@@ -33,3 +33,12 @@ services:
     App\Serializer\DocsLdNormalizer:
         decorates: 'api_platform.hydra.normalizer.documentation'
         arguments: [ '@App\Serializer\DocsLdNormalizer.inner']
+
+    acme_api.event.authentication_success_listener:
+        class: App\EventListener\AuthenticationSuccess
+        tags:
+        - { name: kernel.event_listener, event: lexik_jwt_authentication.on_authentication_success, method: onAuthenticationSuccessResponse }
+
+    App\OpenApi\JwtDecorator:
+        decorates: 'api_platform.openapi.factory'
+#        arguments: [ '@.inner' ]

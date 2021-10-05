@@ -3,14 +3,15 @@
 #    controller: App\Controller\DefaultController::index
 
 api_login_check:
-  path: /api/login_check
+  path: /login_check
+  methods: ['POST']
 
 # Login route
-login:
-  path:       /login
-  controller: App\Controller\SecurityController::login
-  methods: POST
+#login:
+#  path:       /login
+#  controller: App\Controller\SecurityController::login
+#  methods: POST
 
 # Refresh route
 gesdinet_jwt_refresh_token:
-  path: /api/token/refresh
+  path: /token/refresh

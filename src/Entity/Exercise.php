@@ -42,7 +42,7 @@ class Exercise
     /**
      * @ORM\Column(type="object", nullable=true)
      */
-    private Device $device;
+    private ?Device $device = null;
 
     public function getId(): ?int
     {
@@ -97,7 +97,7 @@ class Exercise
         return $this;
     }
 
-    public function getDevice(): Device
+    public function getDevice(): ?Device
     {
         return $this->device;
     }

@@ -24,6 +24,11 @@ class Device
      */
     private ?string $name;
 
+    /**
+     * @ORM\Column(type="string", length=511, nullable=true)
+     */
+    private ?string $imageSrc = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +42,18 @@ class Device
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getImageSrc(): ?string
+    {
+        return $this->imageSrc;
+    }
+
+    public function setImageSrc(?string $imageSrc): self
+    {
+        $this->imageSrc = $imageSrc;
 
         return $this;
     }
