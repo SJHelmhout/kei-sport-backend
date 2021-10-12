@@ -6,9 +6,10 @@ use App\Entity\Circuit;
 use App\Entity\Workout;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class WorkoutFixtures extends Fixture implements FixtureGroupInterface
+class WorkoutFixtures extends Fixture implements FixtureGroupInterface, DependentFixtureInterface
 {
 
     public function load(ObjectManager $manager)
@@ -25,7 +26,7 @@ class WorkoutFixtures extends Fixture implements FixtureGroupInterface
             "The KEI-Challenge",
             "KEI-Goed",
         );
-        $workoutDescriptions = array();
+//        $workoutDescriptions = array();
 //        for ($x=1; $x<11, $x++;){
 //            array_push($workoutDescriptions, "Desc #" . $x);
 //        }
@@ -37,7 +38,9 @@ class WorkoutFixtures extends Fixture implements FixtureGroupInterface
             for ($y=1; $y<=rand(1,4); $y++){
                 array_push($circuits, $manager->find(Circuit::class, rand(11,20)));
             }
-            $workout->setCircuits($circuits);
+            foreach ($circuits as $circuit){
+                $workout->addCircuit($circuit);
+            }
             $manager->persist($workout);
         }
 
@@ -52,5 +55,14 @@ class WorkoutFixtures extends Fixture implements FixtureGroupInterface
     public static function getGroups(): array
     {
         return ['workouts'];
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            CircuitFixtures::class,
+            ExerciseFixtures::class,
+            DeviceFixtures::class
+        ];
     }
 }
