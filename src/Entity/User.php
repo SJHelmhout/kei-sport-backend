@@ -57,22 +57,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="users")
      */
-    private $sessions;
+    private ArrayCollection $sessions;
 
     /**
      * @ORM\OneToMany(targetEntity=WorkoutLog::class, mappedBy="user", orphanRemoval=true)
      */
-    private $workoutLogs;
+    private ArrayCollection $workoutLogs;
 
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="user", orphanRemoval=true)
      */
-    private $circuitLogs;
+    private ArrayCollection $circuitLogs;
 
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="user", orphanRemoval=true)
      */
-    private $exerciseLogs;
+    private ArrayCollection $exerciseLogs;
 
     public function __construct()
     {

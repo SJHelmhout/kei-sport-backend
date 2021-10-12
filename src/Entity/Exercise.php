@@ -41,27 +41,22 @@ class Exercise
      */
     private ?int $duration;
 
-//    /**
-//     * @ORM\Column(type="object", nullable=true)
-//     */
-//    private ?Device $device = null;
-
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="exercise", orphanRemoval=true)
      */
-    private $exerciseLogs;
+    private ArrayCollection $exerciseLogs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Circuit::class, inversedBy="exercises")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $circuit;
+    private ?Circuit $circuit;
 
     /**
      * @ORM\ManyToOne(targetEntity=Device::class, inversedBy="exercises")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $device;
+    private ?Device $device;
 
     public function __construct()
     {
@@ -120,18 +115,6 @@ class Exercise
 
         return $this;
     }
-
-//    public function getDevice(): ?Device
-//    {
-//        return $this->device;
-//    }
-//
-//    public function setDevice($device): self
-//    {
-//        $this->device = $device;
-//
-//        return $this;
-//    }
 
     /**
      * @return Collection|ExerciseLog[]

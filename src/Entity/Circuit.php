@@ -31,26 +31,21 @@ class Circuit
      */
     private ?string $description;
 
-//    /**
-//     * @ORM\Column(type="array")
-//     */
-//    private array $exercises = [];
-
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="circuit", orphanRemoval=true)
      */
-    private $circuitLogs;
+    private ArrayCollection $circuitLogs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="circuits")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $workout;
+    private ?Workout $workout;
 
     /**
      * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="circuit", orphanRemoval=true)
      */
-    private $exercises;
+    private ArrayCollection $exercises;
 
     public function __construct()
     {
@@ -86,18 +81,6 @@ class Circuit
 
         return $this;
     }
-
-//    public function getExercises(): ?array
-//    {
-//        return $this->exercises;
-//    }
-//
-//    public function setExercises(array $exercises): self
-//    {
-//        $this->exercises = $exercises;
-//
-//        return $this;
-//    }
 
     /**
      * @return Collection|CircuitLog[]

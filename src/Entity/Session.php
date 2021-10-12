@@ -22,16 +22,6 @@ class Session
      */
     private ?int $id;
 
-//    /**
-//     * @ORM\Column(type="object")
-//     */
-//    private Workout $workout;
-
-//    /**
-//     * @ORM\Column(type="array")
-//     */
-//    private array $users = [];
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -45,13 +35,13 @@ class Session
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sessions")
      */
-    private $users;
+    private ArrayCollection $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="sessions")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $workout;
+    private Workout $workout;
 
     public function __construct()
     {
@@ -74,18 +64,6 @@ class Session
 
         return $this;
     }
-
-//    public function getUsers(): ?array
-//    {
-//        return $this->users;
-//    }
-//
-//    public function setUsers(array $users): self
-//    {
-//        $this->users = $users;
-//
-//        return $this;
-//    }
 
     public function getStartTime(): ?DateTimeInterface
     {

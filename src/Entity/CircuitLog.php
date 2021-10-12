@@ -20,11 +20,6 @@ class CircuitLog
      */
     private ?int $id;
 
-//    /**
-//     * @ORM\Column(type="object")
-//     */
-//    private User $user;
-
     /**
      * @ORM\Column(type="datetime")
      */
@@ -39,35 +34,18 @@ class CircuitLog
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="circuitLogs")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private ?User $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Circuit::class, inversedBy="circuitLogs")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $circuit;
-
-//    /**
-//     * @ORM\Column(type="object")
-//     */
-//    private Circuit $circuit;
+    private ?Circuit $circuit;
 
     public function getId(): ?int
     {
         return $this->id;
     }
-
-//    public function getUser(): User
-//    {
-//        return $this->user;
-//    }
-//
-//    public function setUser($user): self
-//    {
-//        $this->user = $user;
-//
-//        return $this;
-//    }
 
     public function getStartTime(): DateTimeInterface
     {
@@ -93,39 +71,27 @@ class CircuitLog
         return $this;
     }
 
-//    public function getCircuit(): Circuit
-//    {
-//        return $this->circuit;
-//    }
-//
-//    public function setCircuit($circuit): self
-//    {
-//        $this->circuit = $circuit;
-//
-//        return $this;
-//    }
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
 
-public function getUser(): ?User
-{
-    return $this->user;
-}
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
-public function setUser(?User $user): self
-{
-    $this->user = $user;
+        return $this;
+    }
 
-    return $this;
-}
+    public function getCircuit(): ?Circuit
+    {
+        return $this->circuit;
+    }
 
-public function getCircuit(): ?Circuit
-{
-    return $this->circuit;
-}
+    public function setCircuit(?Circuit $circuit): self
+    {
+        $this->circuit = $circuit;
 
-public function setCircuit(?Circuit $circuit): self
-{
-    $this->circuit = $circuit;
-
-    return $this;
-}
+        return $this;
+    }
 }
