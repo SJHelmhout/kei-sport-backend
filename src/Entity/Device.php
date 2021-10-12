@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\DeviceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +30,16 @@ class Device
      * @ORM\Column(type="string", length=511, nullable=true)
      */
     private ?string $imageSrc = null;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="device", orphanRemoval=true)
+     */
+    private $exercises;
+
+    public function __construct()
+    {
+        $this->exercises = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -54,6 +66,36 @@ class Device
     public function setImageSrc(?string $imageSrc): self
     {
         $this->imageSrc = $imageSrc;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exercise[]
+     */
+    public function getExercises(): Collection
+    {
+        return $this->exercises;
+    }
+
+    public function addExercise(Exercise $exercise): self
+    {
+        if (!$this->exercises->contains($exercise)) {
+            $this->exercises[] = $exercise;
+            $exercise->setDevice($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExercise(Exercise $exercise): self
+    {
+        if ($this->exercises->removeElement($exercise)) {
+            // set the owning side to null (unless already changed)
+            if ($exercise->getDevice() === $this) {
+                $exercise->setDevice(null);
+            }
+        }
 
         return $this;
     }

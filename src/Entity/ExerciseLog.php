@@ -20,10 +20,10 @@ class ExerciseLog
      */
     private ?int $id;
 
-    /**
-     * @ORM\Column(type="object")
-     */
-    private User $user;
+//    /**
+//     * @ORM\Column(type="object")
+//     */
+//    private User $user;
 
     /**
      * @ORM\Column(type="datetime")
@@ -36,26 +36,38 @@ class ExerciseLog
     private DateTimeInterface $endTime;
 
     /**
-     * @ORM\Column(type="object")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="exerciseLogs")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private Exercise $exercise;
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Exercise::class, inversedBy="exerciseLogs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $exercise;
+
+//    /**
+//     * @ORM\Column(type="object")
+//     */
+//    private Exercise $exercise;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function setUser($user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
+//    public function getUser(): User
+//    {
+//        return $this->user;
+//    }
+//
+//    public function setUser($user): self
+//    {
+//        $this->user = $user;
+//
+//        return $this;
+//    }
 
     public function getStartTime(): ?DateTimeInterface
     {
@@ -81,15 +93,39 @@ class ExerciseLog
         return $this;
     }
 
-    public function getExercise(): Exercise
-    {
-        return $this->exercise;
-    }
+//    public function getExercise(): Exercise
+//    {
+//        return $this->exercise;
+//    }
+//
+//    public function setExercise($exercise): self
+//    {
+//        $this->exercise = $exercise;
+//
+//        return $this;
+//    }
 
-    public function setExercise($exercise): self
-    {
-        $this->exercise = $exercise;
+public function getUser(): ?User
+{
+    return $this->user;
+}
 
-        return $this;
-    }
+public function setUser(?User $user): self
+{
+    $this->user = $user;
+
+    return $this;
+}
+
+public function getExercise(): ?Exercise
+{
+    return $this->exercise;
+}
+
+public function setExercise(?Exercise $exercise): self
+{
+    $this->exercise = $exercise;
+
+    return $this;
+}
 }

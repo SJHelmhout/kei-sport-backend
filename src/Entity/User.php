@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -51,6 +53,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * User's password before hashing
      */
     private ?string $plainPassword = '';
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="users")
+     */
+    private $sessions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=WorkoutLog::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $workoutLogs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $circuitLogs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $exerciseLogs;
+
+    public function __construct()
+    {
+        $this->sessions = new ArrayCollection();
+        $this->workoutLogs = new ArrayCollection();
+        $this->circuitLogs = new ArrayCollection();
+        $this->exerciseLogs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -173,6 +203,123 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPlainPassword(string $plainPassword): self
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Session[]
+     */
+    public function getSessions(): Collection
+    {
+        return $this->sessions;
+    }
+
+    public function addSession(Session $session): self
+    {
+        if (!$this->sessions->contains($session)) {
+            $this->sessions[] = $session;
+            $session->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSession(Session $session): self
+    {
+        if ($this->sessions->removeElement($session)) {
+            $session->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WorkoutLog[]
+     */
+    public function getWorkoutLogs(): Collection
+    {
+        return $this->workoutLogs;
+    }
+
+    public function addWorkoutLog(WorkoutLog $workoutLog): self
+    {
+        if (!$this->workoutLogs->contains($workoutLog)) {
+            $this->workoutLogs[] = $workoutLog;
+            $workoutLog->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWorkoutLog(WorkoutLog $workoutLog): self
+    {
+        if ($this->workoutLogs->removeElement($workoutLog)) {
+            // set the owning side to null (unless already changed)
+            if ($workoutLog->getUser() === $this) {
+                $workoutLog->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CircuitLog[]
+     */
+    public function getCircuitLogs(): Collection
+    {
+        return $this->circuitLogs;
+    }
+
+    public function addCircuitLog(CircuitLog $circuitLog): self
+    {
+        if (!$this->circuitLogs->contains($circuitLog)) {
+            $this->circuitLogs[] = $circuitLog;
+            $circuitLog->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCircuitLog(CircuitLog $circuitLog): self
+    {
+        if ($this->circuitLogs->removeElement($circuitLog)) {
+            // set the owning side to null (unless already changed)
+            if ($circuitLog->getUser() === $this) {
+                $circuitLog->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ExerciseLog[]
+     */
+    public function getExerciseLogs(): Collection
+    {
+        return $this->exerciseLogs;
+    }
+
+    public function addExerciseLog(ExerciseLog $exerciseLog): self
+    {
+        if (!$this->exerciseLogs->contains($exerciseLog)) {
+            $this->exerciseLogs[] = $exerciseLog;
+            $exerciseLog->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExerciseLog(ExerciseLog $exerciseLog): self
+    {
+        if ($this->exerciseLogs->removeElement($exerciseLog)) {
+            // set the owning side to null (unless already changed)
+            if ($exerciseLog->getUser() === $this) {
+                $exerciseLog->setUser(null);
+            }
+        }
 
         return $this;
     }
