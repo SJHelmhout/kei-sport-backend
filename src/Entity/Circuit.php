@@ -34,7 +34,7 @@ class Circuit
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="circuit", orphanRemoval=true)
      */
-    private ArrayCollection $circuitLogs;
+    private Collection $circuitLogs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="circuits")
@@ -45,7 +45,7 @@ class Circuit
     /**
      * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="circuit", orphanRemoval=true)
      */
-    private ArrayCollection $exercises;
+    private Collection $exercises;
 
     public function __construct()
     {

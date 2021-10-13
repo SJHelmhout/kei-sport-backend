@@ -35,7 +35,7 @@ class Session
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sessions")
      */
-    private ArrayCollection $users;
+    private Collection $users;
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="sessions")

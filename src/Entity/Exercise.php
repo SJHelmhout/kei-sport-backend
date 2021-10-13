@@ -44,7 +44,7 @@ class Exercise
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="exercise", orphanRemoval=true)
      */
-    private ArrayCollection $exerciseLogs;
+    private Collection $exerciseLogs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Circuit::class, inversedBy="exercises")

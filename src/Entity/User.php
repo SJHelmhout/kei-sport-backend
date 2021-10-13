@@ -56,23 +56,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\ManyToMany(targetEntity=Session::class, mappedBy="users")
+     * @param Collection
      */
-    private ArrayCollection $sessions;
+//    public ArrayCollection $sessions;
+    public Collection $sessions;
 
     /**
      * @ORM\OneToMany(targetEntity=WorkoutLog::class, mappedBy="user", orphanRemoval=true)
      */
-    private ArrayCollection $workoutLogs;
+    private Collection $workoutLogs;
 
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="user", orphanRemoval=true)
      */
-    private ArrayCollection $circuitLogs;
+    private Collection $circuitLogs;
 
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="user", orphanRemoval=true)
      */
-    private ArrayCollection $exerciseLogs;
+    private Collection $exerciseLogs;
 
     public function __construct()
     {
@@ -215,6 +217,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->sessions;
     }
 
+    /**
+     * @param Session $session
+     * @return $this
+     */
     public function addSession(Session $session): self
     {
         if (!$this->sessions->contains($session)) {

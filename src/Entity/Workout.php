@@ -34,17 +34,17 @@ class Workout
     /**
      * @ORM\OneToMany(targetEntity=WorkoutLog::class, mappedBy="workout", orphanRemoval=true)
      */
-    private ArrayCollection $workoutLogs;
+    private Collection $workoutLogs;
 
     /**
      * @ORM\OneToMany(targetEntity=Circuit::class, mappedBy="workout", orphanRemoval=true)
      */
-    private ArrayCollection $circuits;
+    private Collection $circuits;
 
     /**
      * @ORM\OneToMany(targetEntity=Session::class, mappedBy="workout", orphanRemoval=true)
      */
-    private ArrayCollection $sessions;
+    private Collection $sessions;
 
     public function __construct()
     {

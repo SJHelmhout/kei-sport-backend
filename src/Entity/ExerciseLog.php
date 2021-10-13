@@ -20,10 +20,6 @@ class ExerciseLog
      */
     private ?int $id;
 
-//    /**
-//     * @ORM\Column(type="object")
-//     */
-//    private User $user;
 
     /**
      * @ORM\Column(type="datetime")

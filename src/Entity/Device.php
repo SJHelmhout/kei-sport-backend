@@ -34,7 +34,7 @@ class Device
     /**
      * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="device", orphanRemoval=true)
      */
-    private ArrayCollection $exercises;
+    private Collection $exercises;
 
     public function __construct()
     {
