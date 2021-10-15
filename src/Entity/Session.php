@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\SessionRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,16 +23,6 @@ class Session
     private ?int $id;
 
     /**
-     * @ORM\Column(type="object")
-     */
-    private Workout $workout;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private array $users = [];
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private DateTimeInterface $startTime;
@@ -39,6 +31,22 @@ class Session
      * @ORM\Column(type="datetime")
      */
     private DateTimeInterface $endTime;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sessions")
+     */
+    private Collection $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="sessions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private Workout $workout;
+
+    public function __construct()
+    {
+        $this->users = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -53,18 +61,6 @@ class Session
     public function setWorkout($workout): self
     {
         $this->workout = $workout;
-
-        return $this;
-    }
-
-    public function getUsers(): ?array
-    {
-        return $this->users;
-    }
-
-    public function setUsers(array $users): self
-    {
-        $this->users = $users;
 
         return $this;
     }
@@ -89,6 +85,30 @@ class Session
     public function setEndTime(DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
 
         return $this;
     }

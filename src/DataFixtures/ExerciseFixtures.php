@@ -5,14 +5,15 @@ namespace App\DataFixtures;
 use App\Entity\Exercise;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Device;
 
-class ExerciseFixtures extends Fixture implements FixtureGroupInterface
+class ExerciseFixtures extends Fixture implements FixtureGroupInterface, DependentFixtureInterface
 {
+    public const EXERCISES_REFERENCE = 'exercises';
 
     public function load(ObjectManager $manager)
-        //TODO: Insert Exercises with Devices
     {
         $exerciseNames = array(
             "Crunch",
@@ -35,6 +36,10 @@ class ExerciseFixtures extends Fixture implements FixtureGroupInterface
             } else {
                 $exercise->setReps(rand(5, 20));
             }
+            /** @var Device $device */
+            $device = $this->getReference(DeviceFixtures::DEVICES_REFERENCE);
+//            $device = $manager->find(Device::class, rand(1, 10));
+            $exercise->setDevice($device);
             $manager->persist($exercise);
         }
 
@@ -42,6 +47,7 @@ class ExerciseFixtures extends Fixture implements FixtureGroupInterface
         // $product = new Product();
         // $manager->persist($product);
 
+        $this->addReference(self::EXERCISES_REFERENCE, $exercise);
 
         $manager->flush();
     }
@@ -49,5 +55,12 @@ class ExerciseFixtures extends Fixture implements FixtureGroupInterface
     public static function getGroups(): array
     {
         return ['exercises'];
+    }
+
+    public function getDependencies(): array
+    {
+        return [
+            DeviceFixtures::class
+        ];
     }
 }

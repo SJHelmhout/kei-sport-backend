@@ -9,6 +9,7 @@ use App\Entity\Device;
 
 class DeviceFixtures extends Fixture implements FixtureGroupInterface
 {
+    public const DEVICES_REFERENCE = 'devices';
 
     public function load(ObjectManager $manager)
     {
@@ -34,7 +35,7 @@ class DeviceFixtures extends Fixture implements FixtureGroupInterface
         // $product = new Product();
         // $manager->persist($product);
 
-
+        $this->addReference(self::DEVICES_REFERENCE, $device);
         $manager->flush();
     }
 

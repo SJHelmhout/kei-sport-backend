@@ -21,11 +21,6 @@ class WorkoutLog
     private ?int $id;
 
     /**
-     * @ORM\Column(type="object")
-     */
-    private User $user;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private DateTimeInterface $startTime;
@@ -36,25 +31,20 @@ class WorkoutLog
     private DateTimeInterface $endTime;
 
     /**
-     * @ORM\Column(type="object")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="workoutLogs")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private Workout $workout;
+    private ?User $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="workoutLogs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?Workout $workout;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUser(): User
-    {
-        return $this->user;
-    }
-
-    public function setUser($user): self
-    {
-        $this->user = $user;
-
-        return $this;
     }
 
     public function getStartTime(): ?DateTimeInterface
@@ -81,12 +71,24 @@ class WorkoutLog
         return $this;
     }
 
-    public function getWorkout(): Workout
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getWorkout(): ?Workout
     {
         return $this->workout;
     }
 
-    public function setWorkout($workout): self
+    public function setWorkout(?Workout $workout): self
     {
         $this->workout = $workout;
 

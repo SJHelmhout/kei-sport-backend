@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\CircuitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,9 +32,26 @@ class Circuit
     private ?string $description;
 
     /**
-     * @ORM\Column(type="array")
+     * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="circuit", orphanRemoval=true)
      */
-    private array $exercises = [];
+    private Collection $circuitLogs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="circuits")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?Workout $workout;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="circuit", orphanRemoval=true)
+     */
+    private Collection $exercises;
+
+    public function __construct()
+    {
+        $this->circuitLogs = new ArrayCollection();
+        $this->exercises = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -63,14 +82,74 @@ class Circuit
         return $this;
     }
 
-    public function getExercises(): ?array
+    /**
+     * @return Collection|CircuitLog[]
+     */
+    public function getCircuitLogs(): Collection
+    {
+        return $this->circuitLogs;
+    }
+
+    public function addCircuitLog(CircuitLog $circuitLog): self
+    {
+        if (!$this->circuitLogs->contains($circuitLog)) {
+            $this->circuitLogs[] = $circuitLog;
+            $circuitLog->setCircuit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCircuitLog(CircuitLog $circuitLog): self
+    {
+        if ($this->circuitLogs->removeElement($circuitLog)) {
+            // set the owning side to null (unless already changed)
+            if ($circuitLog->getCircuit() === $this) {
+                $circuitLog->setCircuit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getWorkout(): ?Workout
+    {
+        return $this->workout;
+    }
+
+    public function setWorkout(?Workout $workout): self
+    {
+        $this->workout = $workout;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exercise[]
+     */
+    public function getExercises(): Collection
     {
         return $this->exercises;
     }
 
-    public function setExercises(array $exercises): self
+    public function addExercise(Exercise $exercise): self
     {
-        $this->exercises = $exercises;
+        if (!$this->exercises->contains($exercise)) {
+            $this->exercises[] = $exercise;
+            $exercise->setCircuit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExercise(Exercise $exercise): self
+    {
+        if ($this->exercises->removeElement($exercise)) {
+            // set the owning side to null (unless already changed)
+            if ($exercise->getCircuit() === $this) {
+                $exercise->setCircuit(null);
+            }
+        }
 
         return $this;
     }
