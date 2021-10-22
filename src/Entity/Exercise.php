@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ExerciseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,9 +42,26 @@ class Exercise
     private ?int $duration;
 
     /**
-     * @ORM\Column(type="object", nullable=true)
+     * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="exercise", orphanRemoval=true)
      */
-    private ?Device $device = null;
+    private Collection $exerciseLogs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Circuit::class, inversedBy="exercises")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?Circuit $circuit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Device::class, inversedBy="exercises")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?Device $device;
+
+    public function __construct()
+    {
+        $this->exerciseLogs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,12 +116,54 @@ class Exercise
         return $this;
     }
 
+    /**
+     * @return Collection|ExerciseLog[]
+     */
+    public function getExerciseLogs(): Collection
+    {
+        return $this->exerciseLogs;
+    }
+
+    public function addExerciseLog(ExerciseLog $exerciseLog): self
+    {
+        if (!$this->exerciseLogs->contains($exerciseLog)) {
+            $this->exerciseLogs[] = $exerciseLog;
+            $exerciseLog->setExercise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExerciseLog(ExerciseLog $exerciseLog): self
+    {
+        if ($this->exerciseLogs->removeElement($exerciseLog)) {
+            // set the owning side to null (unless already changed)
+            if ($exerciseLog->getExercise() === $this) {
+                $exerciseLog->setExercise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getCircuit(): ?Circuit
+    {
+        return $this->circuit;
+    }
+
+    public function setCircuit(?Circuit $circuit): self
+    {
+        $this->circuit = $circuit;
+
+        return $this;
+    }
+
     public function getDevice(): ?Device
     {
         return $this->device;
     }
 
-    public function setDevice($device): self
+    public function setDevice(?Device $device): self
     {
         $this->device = $device;
 
