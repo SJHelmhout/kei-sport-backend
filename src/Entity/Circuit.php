@@ -7,9 +7,13 @@ use App\Repository\CircuitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups" = {"circuit:read"}},
+ * )
  * @ORM\Entity(repositoryClass=CircuitRepository::class)
  */
 class Circuit
@@ -18,32 +22,39 @@ class Circuit
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"workout:read", "circuit:read"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"workout:read", "circuit:read"})
      */
     private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"workout:read", "circuit:read"})
      */
     private ?string $description;
 
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="circuit", orphanRemoval=true)
+     * @Groups({"workout:read", "circuit:read"})
      */
     private Collection $circuitLogs;
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="circuits")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"workout:read", "circuit:read"})
      */
     private ?Workout $workout;
 
     /**
      * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="circuit", orphanRemoval=true)
+     * @Groups({"workout:read", "circuit:read"})
+     * @MaxDepth (1)
      */
     private Collection $exercises;
 

@@ -9,11 +9,11 @@
         "ext-iconv": "*",
         "api-platform/core": "^2.6",
         "composer/package-versions-deprecated": "1.11.99.4",
-        "doctrine/annotations": "^1.0",
+        "doctrine/annotations": "^1.13",
         "doctrine/doctrine-bundle": "^2.4",
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.9",
-        "gesdinet/jwt-refresh-token-bundle": "^v1.0.0-beta4",
+        "gesdinet/jwt-refresh-token-bundle": "^0.12.0",
         "lexik/jwt-authentication-bundle": "^2.13",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
@@ -79,6 +79,8 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.4",
-        "symfony/maker-bundle": "^1.33"
+        "symfony/maker-bundle": "^1.33",
+        "symfony/stopwatch": "5.3.*",
+        "symfony/web-profiler-bundle": "5.3.*"
     }
 }

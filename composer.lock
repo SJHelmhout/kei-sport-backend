@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdbad70d56374bb6eace989c015b7174",
+    "content-hash": "23039993eaa336107029e6d0af4c5c0d",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1809,49 +1809,29 @@
         },
         {
             "name": "gesdinet/jwt-refresh-token-bundle",
-            "version": "v1.0.0-beta4",
+            "version": "v0.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/markitosgv/JWTRefreshTokenBundle.git",
-                "reference": "503c69d397c2edb8d20093030ea338befca0a725"
+                "reference": "4a7109df39b84b5bc41e6ee16da8cdcb9e0093fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/503c69d397c2edb8d20093030ea338befca0a725",
-                "reference": "503c69d397c2edb8d20093030ea338befca0a725",
+                "url": "https://api.github.com/repos/markitosgv/JWTRefreshTokenBundle/zipball/4a7109df39b84b5bc41e6ee16da8cdcb9e0093fb",
+                "reference": "4a7109df39b84b5bc41e6ee16da8cdcb9e0093fb",
                 "shasum": ""
             },
             "require": {
-                "lexik/jwt-authentication-bundle": "^2.0",
-                "php": ">=7.4",
-                "symfony/config": "^3.4|^4.4|^5.2",
-                "symfony/console": "^3.4|^4.4|^5.2",
-                "symfony/dependency-injection": "^3.4|^4.4|^5.2",
-                "symfony/deprecation-contracts": "^2.1",
-                "symfony/event-dispatcher": "^3.4|^4.4|^5.2",
-                "symfony/http-foundation": "^3.4|^4.4|^5.2",
-                "symfony/http-kernel": "^3.4|^4.4|^5.2",
-                "symfony/polyfill-php80": "^1.15",
-                "symfony/property-access": "^3.4|^4.4|^5.2",
-                "symfony/security-bundle": "^3.4|^4.0|^5.2",
-                "symfony/security-core": "^3.4|^4.4|^5.2",
-                "symfony/security-guard": "^3.4|^4.4|^5.2",
-                "symfony/security-http": "^3.4|^4.4|^5.2"
-            },
-            "conflict": {
-                "doctrine/persistence": "<1.3.3"
+                "lexik/jwt-authentication-bundle": "^1.1|^2.0@dev",
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/framework-bundle": "~3.4|~4.0|~5.0",
+                "symfony/validator": "~3.4|~4.0|~5.0"
             },
             "require-dev": {
-                "akeneo/phpspec-skip-example-extension": "^4.0|^5.0",
-                "doctrine/cache": "^1.11|^2.0",
-                "doctrine/doctrine-bundle": "^1.12|^2.0",
+                "doctrine/doctrine-bundle": "~1.4|~2.0",
                 "doctrine/mongodb-odm-bundle": "^3.4|^4.0",
-                "doctrine/orm": "^2.7",
-                "doctrine/persistence": "^1.3.3|^2.0",
-                "matthiasnoback/symfony-dependency-injection-test": "^4.0",
-                "phpspec/phpspec": "^7.0",
-                "phpunit/phpunit": "^8.5|^9.5",
-                "symfony/cache": "^3.4|^4.4|^5.2"
+                "doctrine/orm": "^2.4.8",
+                "phpspec/phpspec": "^3.0|^4.0|^5.0|^6.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1862,10 +1842,7 @@
             "autoload": {
                 "psr-4": {
                     "Gesdinet\\JWTRefreshTokenBundle\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -1883,9 +1860,9 @@
             ],
             "support": {
                 "issues": "https://github.com/markitosgv/JWTRefreshTokenBundle/issues",
-                "source": "https://github.com/markitosgv/JWTRefreshTokenBundle/tree/v1.0.0-beta4"
+                "source": "https://github.com/markitosgv/JWTRefreshTokenBundle/tree/v0.12.0"
             },
-            "time": "2021-07-29T06:31:17+00:00"
+            "time": "2021-04-23T16:47:20+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -8839,13 +8816,90 @@
                 }
             ],
             "time": "2021-09-27T14:29:38+00:00"
+        },
+        {
+            "name": "symfony/web-profiler-bundle",
+            "version": "v5.3.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/web-profiler-bundle.git",
+                "reference": "9ba1e05fdc7a46979047ba6c8949bd35e3a386a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/web-profiler-bundle/zipball/9ba1e05fdc7a46979047ba6c8949bd35e3a386a5",
+                "reference": "9ba1e05fdc7a46979047ba6c8949bd35e3a386a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/config": "^4.4|^5.0",
+                "symfony/framework-bundle": "^5.3",
+                "symfony/http-kernel": "^5.3",
+                "symfony/polyfill-php80": "^1.16",
+                "symfony/routing": "^4.4|^5.0",
+                "symfony/twig-bundle": "^4.4|^5.0",
+                "twig/twig": "^2.13|^3.0.4"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<5.2",
+                "symfony/form": "<4.4",
+                "symfony/messenger": "<4.4"
+            },
+            "require-dev": {
+                "symfony/browser-kit": "^4.4|^5.0",
+                "symfony/console": "^4.4|^5.0",
+                "symfony/css-selector": "^4.4|^5.0",
+                "symfony/stopwatch": "^4.4|^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Bundle\\WebProfilerBundle\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides a development tool that gives detailed information about the execution of any request",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/web-profiler-bundle/tree/v5.3.8"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-09-17T08:55:39+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "gesdinet/jwt-refresh-token-bundle": 10
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
