@@ -6,7 +6,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\WorkoutLogRepository;
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use App\Controller\Api\RecentWorkoutsChartController;
+use App\Controller\Api\Visualisation\Graphs\RecentWorkoutsChartController;
+use App\Controller\Api\Visualisation\Graphs\MostPerformedWorkoutsController;
 
 /**
  * @ApiResource(
@@ -15,9 +16,15 @@ use App\Controller\Api\RecentWorkoutsChartController;
  *     "recent_workouts"={
  *              "method"="GET",
  *              "path"="/workout_logs/recent_workouts",
- *              "controller"=RecentWorkoutsChartController::class,
+ *             "controller"=RecentWorkoutsChartController::class,
  *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
  *          },
+ *     "most_performed_workouts"={
+ *            "method"="GET",
+ *            "path"="/workout_logs/most_performed",
+ *            "controller"=MostPerformedWorkoutsController::class,
+ *            "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *           }
  *     }
  * )
  * @ORM\Entity(repositoryClass=WorkoutLogRepository::class)
