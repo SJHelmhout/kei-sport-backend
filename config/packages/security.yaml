@@ -10,7 +10,7 @@ security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
+        user:
             entity:
                 class: App\Entity\User
                 property: email
@@ -18,7 +18,6 @@ security:
         api_token_refresh:
             pattern: ^/token/refresh
             stateless: true
-#            refresh_jwt: ~
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -44,7 +43,7 @@ security:
 
         main:
             lazy: true
-            provider: app_user_provider
+            provider: user
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

@@ -4,6 +4,7 @@ namespace App\Controller\Api\Visualisation\Graphs;
 
 use App\Entity\Workout;
 use App\Entity\WorkoutLog;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\Expr\Join;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -37,17 +38,17 @@ class RecentWorkoutsChartController
                 Join::WITH,
                 "workout.id = log.workout"
             )
-            ->orderBy("log.id", "DESC")
-            ->setMaxResults(5)
+            ->orderBy("log.startTime", "ASC")
         ;
         $result = $queryBuilder->getQuery()->setParameter("user", $this->security->getUser())->getResult();
         foreach ($result as $value){
             $difference = $value["startTime"]->diff($value["endTime"]);
-            array_push($chartData, $difference->format("%i"));
-            array_push($labels, $value["name"]);
+            $minutes = $difference->h * 60;
+            $minutes += $difference->i;
+            $dayMonth = $value["endTime"]->format("d") . " - " . $value["endTime"]->format("m");
+            array_push($chartData, $minutes);
+            array_push($labels, $dayMonth);
         }
-        $chartData = array_reverse($chartData);
-        $labels = array_reverse($labels);
 
         return new JsonResponse([$labels, $chartData]);
     }
