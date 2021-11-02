@@ -85,6 +85,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private Collection $exerciseLogs;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Workout::class)
+     */
+    private ?Workout $selectedWorkout;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $twoFactorCode;
+
     public function __construct()
     {
         $this->sessions = new ArrayCollection();
@@ -335,6 +345,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $exerciseLog->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSelectedWorkout(): ?Workout
+    {
+        return $this->selectedWorkout;
+    }
+
+    public function setSelectedWorkout(?Workout $selectedWorkout): self
+    {
+        $this->selectedWorkout = $selectedWorkout;
+
+        return $this;
+    }
+
+    public function getTwoFactorCode(): ?string
+    {
+        return $this->twoFactorCode;
+    }
+
+    public function setTwoFactorCode(?string $twoFactorCode): self
+    {
+        $this->twoFactorCode = $twoFactorCode;
 
         return $this;
     }

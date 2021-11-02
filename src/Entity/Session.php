@@ -43,6 +43,11 @@ class Session
      */
     private Workout $workout;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private ?bool $isActive;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -109,6 +114,18 @@ class Session
     public function removeUser(User $user): self
     {
         $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }
