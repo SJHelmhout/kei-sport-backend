@@ -49,5 +49,9 @@ services:
         decorates: 'api_platform.openapi.factory'
         arguments: [ '@.inner' ]
 
+    App\OpenApi\TwoFactorGeneratorDecorator:
+        decorates: 'api_platform.openapi.factory'
+        arguments: [ '@.inner' ]
+
 #    App\Controller\Api\RecentWorkoutsChartController:
 #        tags: [controller.service_arguments]
