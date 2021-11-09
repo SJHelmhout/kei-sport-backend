@@ -8,7 +8,8 @@ use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ * )
  * @ORM\Entity(repositoryClass=CircuitLogRepository::class)
  */
 class CircuitLog

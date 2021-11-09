@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 /**
  * @ApiResource(
  *     normalizationContext={"groups" = {"workout:read"}, "enable_max_depth" = true },
- *
+ *     denormalizationContext={"groups" = {"workout:write"}, "enable_max_depth" = true },
  * )
  * @ORM\Entity(repositoryClass=WorkoutRepository::class)
  */
@@ -29,13 +29,13 @@ class Workout
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"workout:read"})
+     * @Groups({"workout:read", "workout:write"})
      */
     private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"workout:read"})
+     * @Groups({"workout:read", "workout:write"})
      */
     private ?string $description;
 
@@ -46,8 +46,8 @@ class Workout
     private Collection $workoutLogs;
 
     /**
-     * @ORM\OneToMany(targetEntity=Circuit::class, mappedBy="workout", orphanRemoval=true)
-     * @Groups({"workout:read"})
+     * @ORM\OneToMany(targetEntity=Circuit::class, mappedBy="workout", orphanRemoval=true, cascade={"persist"})
+     * @Groups({"workout:read", "workout:write"})
      * @MaxDepth (1)
      */
     private Collection $circuits;

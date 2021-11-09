@@ -12,6 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *      normalizationContext={"groups" = {"exercise:read"}, "enable_max_depth" = true },
+ *      denormalizationContext={"groups" = {"workout:write"}, "enable_max_depth" = true },
  * )
  * @ORM\Entity(repositoryClass=ExerciseRepository::class)
  */
@@ -27,25 +28,25 @@ class Exercise
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"workout:read", "exercise:read"})
+     * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
     private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"workout:read", "exercise:read"})
+     * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
     private ?string $equipment;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"workout:read", "exercise:read"})
+     * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
     private ?int $reps;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups({"workout:read", "exercise:read"})
+     * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
     private ?int $duration;
 
@@ -63,9 +64,9 @@ class Exercise
     private ?Circuit $circuit;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Device::class, inversedBy="exercises")
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups({"workout:read", "exercise:read"})
+     * @ORM\ManyToOne(targetEntity=Device::class, inversedBy="exercises", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
     private ?Device $device;
 

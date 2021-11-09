@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
 /**
  * @ApiResource(
  *     normalizationContext={"groups" = {"circuit:read"}},
+ *     denormalizationContext={"groups" = {"workout:write"}, "enable_max_depth" = true },
  * )
  * @ORM\Entity(repositoryClass=CircuitRepository::class)
  */
@@ -22,19 +23,19 @@ class Circuit
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"workout:read", "circuit:read"})
+     * @Groups({"workout:read"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"workout:read", "circuit:read"})
+     * @Groups({"workout:read", "workout:write", "circuit:read"})
      */
     private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"workout:read", "circuit:read"})
+     * @Groups({"workout:read", "workout:write", "circuit:read"})
      */
     private ?string $description;
 
@@ -52,8 +53,8 @@ class Circuit
     private ?Workout $workout;
 
     /**
-     * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="circuit", orphanRemoval=true)
-     * @Groups({"workout:read", "circuit:read"})
+     * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="circuit", orphanRemoval=true, cascade={"persist"})
+     * @Groups({"workout:read", "workout:write", "circuit:read"})
      * @MaxDepth (1)
      */
     private Collection $exercises;

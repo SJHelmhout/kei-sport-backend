@@ -25,6 +25,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    //TODO: Velden die niet opgehaald mogen worden bij GET-requests niet meegeven.
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
