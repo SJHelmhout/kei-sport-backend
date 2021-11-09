@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\ExerciseLogRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -43,6 +44,12 @@ class ExerciseLog
      * @ORM\JoinColumn(nullable=false)
      */
     private ?Exercise $exercise;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CircuitLog::class, inversedBy="exerciseLogs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private ?CircuitLog $circuitLog;
 
     public function getId(): ?int
     {
@@ -93,6 +100,18 @@ class ExerciseLog
     public function setExercise(?Exercise $exercise): self
     {
         $this->exercise = $exercise;
+
+        return $this;
+    }
+
+    public function getCircuitLog(): ?CircuitLog
+    {
+        return $this->circuitLog;
+    }
+
+    public function setCircuitLog(?CircuitLog $circuitLog): self
+    {
+        $this->circuitLog = $circuitLog;
 
         return $this;
     }

@@ -4,15 +4,20 @@ namespace App\DataFixtures;
 
 use App\Entity\Circuit;
 use App\Entity\CircuitLog;
+use App\Entity\ExerciseLog;
 use App\Entity\User;
+use App\Entity\WorkoutLog;
 use DateInterval;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class CircuitLogFixtures extends Fixture implements DependentFixtureInterface
 {
+    public const CIRCUIT_LOGS_REFERENCE = 'circuitLogs';
+
 
     /**
      * @inheritDoc
@@ -22,6 +27,7 @@ class CircuitLogFixtures extends Fixture implements DependentFixtureInterface
         return [
             UserFixtures::class,
             CircuitFixtures::class,
+            WorkoutLogFixtures::class
         ];
     }
 
@@ -42,13 +48,18 @@ class CircuitLogFixtures extends Fixture implements DependentFixtureInterface
             $user = $this->getReference('users');
             /** @var Circuit $circuit */
             $circuit = $this->getReference('circuits');
+            /** @var Collection $workoutLog */
+            $workoutLog = $this->getReference('workoutLogs');
+
 
             $circuitLog
                 ->setStartTime($startTime)
                 ->setEndTime($endTime)
                 ->setUser($user)
                 ->setCircuit($circuit)
+                ->setWorkoutLog($workoutLog)
             ;
+            $this->setReference(self::CIRCUIT_LOGS_REFERENCE, $circuitLog);
 
             $manager->persist($circuitLog);
             $manager->flush();

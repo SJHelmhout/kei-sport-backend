@@ -41,6 +41,7 @@ class SessionFixtures extends Fixture implements DependentFixtureInterface
                 ->setStartTime($startTime)
                 ->setEndTime($endTime)
                 ->setWorkout($workout)
+                ->setIsActive(false)
             ;
 
             $this->setReference(self::SESSION_REFERENCE, $session);

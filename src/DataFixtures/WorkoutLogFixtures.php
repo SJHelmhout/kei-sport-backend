@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\CircuitLog;
 use App\Entity\User;
 use App\Entity\Workout;
 use App\Entity\WorkoutLog;
@@ -12,7 +13,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class WorkoutLogFixtures extends Fixture implements DependentFixtureInterface
 {
-    public const WORKOUTLOG_REFERENCE = 'workoutlogs';
+    public const WORKOUTLOG_REFERENCE = 'workoutLogs';
 
     /**
      * @inheritDoc
@@ -31,13 +32,13 @@ class WorkoutLogFixtures extends Fixture implements DependentFixtureInterface
             $user = $this->getReference('users');
             /** @var Workout $workout */
             $workout = $this->getReference('workouts');
-
             $workoutLog
                 ->setStartTime($startTime)
                 ->setEndTime($endTime)
                 ->setUser($user)
                 ->setWorkout($workout)
             ;
+            $this->setReference(self::WORKOUTLOG_REFERENCE, $workoutLog);
             $manager->persist($workoutLog);
             $manager->flush();
         }

@@ -5,6 +5,8 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\WorkoutLogRepository;
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\Api\Visualisation\Graphs\RecentWorkoutsChartController;
 use App\Controller\Api\Visualisation\Graphs\MostPerformedWorkoutsController;
@@ -60,6 +62,16 @@ class WorkoutLog
      */
     private ?Workout $workout;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="workoutLog", orphanRemoval=true)
+     */
+    private Collection $circuitLogs;
+
+    public function __construct()
+    {
+        $this->circuitLogs = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -109,6 +121,36 @@ class WorkoutLog
     public function setWorkout(?Workout $workout): self
     {
         $this->workout = $workout;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CircuitLog[]
+     */
+    public function getCircuitLogs(): Collection
+    {
+        return $this->circuitLogs;
+    }
+
+    public function addCircuitLog(CircuitLog $circuitLog): self
+    {
+        if (!$this->circuitLogs->contains($circuitLog)) {
+            $this->circuitLogs[] = $circuitLog;
+            $circuitLog->setWorkoutLog($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCircuitLog(CircuitLog $circuitLog): self
+    {
+        if ($this->circuitLogs->removeElement($circuitLog)) {
+            // set the owning side to null (unless already changed)
+            if ($circuitLog->getWorkoutLog() === $this) {
+                $circuitLog->setWorkoutLog(null);
+            }
+        }
 
         return $this;
     }
