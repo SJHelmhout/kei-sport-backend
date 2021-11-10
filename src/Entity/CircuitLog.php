@@ -8,9 +8,12 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups" = {"circuitLog:read"}, "enable_max_depth" = true },
+ *     denormalizationContext={"groups" = {"workoutLog:write"}, "enable_max_depth" = true },
  * )
  * @ORM\Entity(repositoryClass=CircuitLogRepository::class)
  */
@@ -20,28 +23,33 @@ class CircuitLog
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"workoutLog:read", "circuitLog:read"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"workoutLog:read", "workoutLog:write", "circuitLog:read"})
      */
     private DateTimeInterface $startTime;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"workoutLog:read", "workoutLog:write", "circuitLog:read"})
      */
     private DateTimeInterface $endTime;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="circuitLogs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"workoutLog:read", "workoutLog:write", "circuitLog:read"})
      */
     private ?User $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Circuit::class, inversedBy="circuitLogs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"workoutLog:read", "workoutLog:write", "circuitLog:read"})
      */
     private ?Circuit $circuit;
 
@@ -53,6 +61,7 @@ class CircuitLog
 
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="circuitLog", orphanRemoval=true)
+     * @Groups({"workoutLog:read", "workoutLog:write", "circuitLog:read"})
      */
     private Collection $exerciseLogs;
 

@@ -10,11 +10,15 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\Api\Visualisation\Graphs\RecentWorkoutsChartController;
 use App\Controller\Api\Visualisation\Graphs\MostPerformedWorkoutsController;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(
+ *     normalizationContext={"groups" = {"workoutLog:read"}, "enable_max_depth" = true },
+ *     denormalizationContext={"groups" = {"workoutLog:write"}, "enable_max_depth" = true },
  *     collectionOperations={
  *     "get",
+ *     "post",
  *     "recent_workouts"={
  *              "method"="GET",
  *              "path"="/workout_logs/recent_workouts",
@@ -37,33 +41,39 @@ class WorkoutLog
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"workoutLog:read"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"workoutLog:read", "workoutLog:write"})
      */
     private DateTimeInterface $startTime;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups({"workoutLog:read", "workoutLog:write"})
      */
     private DateTimeInterface $endTime;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="workoutLogs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"workoutLog:read", "workoutLog:write"})
      */
     private ?User $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="workoutLogs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"workoutLog:read", "workoutLog:write"})
      */
     private ?Workout $workout;
 
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="workoutLog", orphanRemoval=true)
+     * @Groups({"workoutLog:read", "workoutLog:write"})
      */
     private Collection $circuitLogs;
 
