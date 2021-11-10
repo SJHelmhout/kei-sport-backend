@@ -1,0 +1,6 @@
+# Logfile created on 2021-11-10 12:03:40 +0100 by logger.rb/v1.4.2
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:03:40 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [c3646bcd] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [c3646bcd] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
