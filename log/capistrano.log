@@ -4,3 +4,246 @@
   INFO ---------------------------------------------------------------------------
   INFO [c3646bcd] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
  DEBUG [c3646bcd] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:19:36 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [c1621c6b] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [c1621c6b] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:28:11 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [e80a658c] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [e80a658c] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:28:40 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [f699da61] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [f699da61] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:29:07 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [ee7ddc2c] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [ee7ddc2c] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:33:28 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [3458adda] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [3458adda] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:34:22 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [30430a91] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [30430a91] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:35:16 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [e7b44b76] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [e7b44b76] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:36:21 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [4c922504] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [4c922504] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO [4c922504] Finished in 0.322 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-066e573c12d0690a51df.sh 0.0%
+  INFO Uploading /tmp/git-ssh-066e573c12d0690a51df.sh 100.0%
+  INFO [d6650d94] Running /usr/bin/env chmod 700 /tmp/git-ssh-066e573c12d0690a51df.sh as vwp@kei-sport-backend.kei.dev
+ DEBUG [d6650d94] Command: ( export APP_ENV="prod" ; /usr/bin/env chmod 700 /tmp/git-ssh-066e573c12d0690a51df.sh )
+  INFO [d6650d94] Finished in 0.060 seconds with exit status 0 (successful).
+  INFO [433a79f9] Running /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD as vwp@kei-sport-backend.kei.dev
+ DEBUG [433a79f9] Command: ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-066e573c12d0690a51df.sh" ; /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD )
+ DEBUG [433a79f9] 	Warning: Permanently added 'github.com,140.82.121.3' (RSA) to the list of known hosts.
+ DEBUG [433a79f9] 	Permission denied (publickey).
+ DEBUG [433a79f9] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:37:41 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [f16fcd8b] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [f16fcd8b] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO [f16fcd8b] Finished in 0.333 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-3862e659e560aaf746a2.sh 0.0%
+  INFO Uploading /tmp/git-ssh-3862e659e560aaf746a2.sh 100.0%
+  INFO [9d2833a8] Running /usr/bin/env chmod 700 /tmp/git-ssh-3862e659e560aaf746a2.sh as vwp@kei-sport-backend.kei.dev
+ DEBUG [9d2833a8] Command: ( export APP_ENV="prod" ; /usr/bin/env chmod 700 /tmp/git-ssh-3862e659e560aaf746a2.sh )
+  INFO [9d2833a8] Finished in 0.067 seconds with exit status 0 (successful).
+  INFO [9c0f0c4d] Running /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD as vwp@kei-sport-backend.kei.dev
+ DEBUG [9c0f0c4d] Command: ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-3862e659e560aaf746a2.sh" ; /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD )
+ DEBUG [9c0f0c4d] 	Warning: Permanently added the RSA host key for IP address '140.82.121.4' to the list of known hosts.
+ DEBUG [9c0f0c4d] 	Permission denied (publickey).
+ DEBUG [9c0f0c4d] 	fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:40:27 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [a175f1f7] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [a175f1f7] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO [a175f1f7] Finished in 0.355 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-4dc9b9ea695655f60c88.sh 0.0%
+  INFO Uploading /tmp/git-ssh-4dc9b9ea695655f60c88.sh 100.0%
+  INFO [f9003195] Running /usr/bin/env chmod 700 /tmp/git-ssh-4dc9b9ea695655f60c88.sh as vwp@kei-sport-backend.kei.dev
+ DEBUG [f9003195] Command: ( export APP_ENV="prod" ; /usr/bin/env chmod 700 /tmp/git-ssh-4dc9b9ea695655f60c88.sh )
+  INFO [f9003195] Finished in 0.061 seconds with exit status 0 (successful).
+  INFO [e17ce04a] Running /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD as vwp@kei-sport-backend.kei.dev
+ DEBUG [e17ce04a] Command: ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-4dc9b9ea695655f60c88.sh" ; /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD )
+ DEBUG [e17ce04a] 	a4c0e79717b831a3f65885266604d5c84d6d8bcb	HEAD
+  INFO [e17ce04a] Finished in 1.280 seconds with exit status 0 (successful).
+  INFO [94a076d2] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases as vwp@kei-sport-backend.kei.dev
+ DEBUG [94a076d2] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases )
+  INFO [94a076d2] Finished in 0.046 seconds with exit status 0 (successful).
+  INFO [22ad37b2] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared/config/jwt as vwp@kei-sport-backend.kei.dev
+ DEBUG [22ad37b2] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared/config/jwt )
+  INFO [22ad37b2] Finished in 0.058 seconds with exit status 0 (successful).
+  INFO [63b1c9df] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared as vwp@kei-sport-backend.kei.dev
+ DEBUG [63b1c9df] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared )
+  INFO [63b1c9df] Finished in 0.064 seconds with exit status 0 (successful).
+ DEBUG [22b8db47] Running [ -f /var/www/vhosts/kei-sport-backend/shared/.env.local ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [22b8db47] Command: [ -f /var/www/vhosts/kei-sport-backend/shared/.env.local ]
+ DEBUG [22b8db47] Finished in 0.065 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/vhosts/kei-sport-backend/shared/.env.local does not exist on kei-sport-backend.kei.dev
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:42:04 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [86e36403] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [86e36403] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO [86e36403] Finished in 0.318 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-b17a77e2462c13aea8e2.sh 0.0%
+  INFO Uploading /tmp/git-ssh-b17a77e2462c13aea8e2.sh 100.0%
+  INFO [efd0b532] Running /usr/bin/env chmod 700 /tmp/git-ssh-b17a77e2462c13aea8e2.sh as vwp@kei-sport-backend.kei.dev
+ DEBUG [efd0b532] Command: ( export APP_ENV="prod" ; /usr/bin/env chmod 700 /tmp/git-ssh-b17a77e2462c13aea8e2.sh )
+  INFO [efd0b532] Finished in 0.067 seconds with exit status 0 (successful).
+  INFO [e8fef7c9] Running /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD as vwp@kei-sport-backend.kei.dev
+ DEBUG [e8fef7c9] Command: ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-b17a77e2462c13aea8e2.sh" ; /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD )
+ DEBUG [e8fef7c9] 	a4c0e79717b831a3f65885266604d5c84d6d8bcb	HEAD
+  INFO [e8fef7c9] Finished in 1.244 seconds with exit status 0 (successful).
+  INFO [f0300189] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases as vwp@kei-sport-backend.kei.dev
+ DEBUG [f0300189] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases )
+  INFO [f0300189] Finished in 0.046 seconds with exit status 0 (successful).
+  INFO [16ac5fdf] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared/config/jwt as vwp@kei-sport-backend.kei.dev
+ DEBUG [16ac5fdf] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared/config/jwt )
+  INFO [16ac5fdf] Finished in 0.057 seconds with exit status 0 (successful).
+  INFO [5a5334d5] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared as vwp@kei-sport-backend.kei.dev
+ DEBUG [5a5334d5] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared )
+  INFO [5a5334d5] Finished in 0.063 seconds with exit status 0 (successful).
+ DEBUG [03bcfc6f] Running [ -f /var/www/vhosts/kei-sport-backend/shared/.env.local ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [03bcfc6f] Command: [ -f /var/www/vhosts/kei-sport-backend/shared/.env.local ]
+ DEBUG [03bcfc6f] Finished in 0.065 seconds with exit status 1 (failed).
+ ERROR linked file /var/www/vhosts/kei-sport-backend/shared/.env.local does not exist on kei-sport-backend.kei.dev
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:42:26 +0100 cap local env:copy
+  INFO ---------------------------------------------------------------------------
+  INFO [fbf54222] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases as vwp@kei-sport-backend.kei.dev
+ DEBUG [fbf54222] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases )
+  INFO [fbf54222] Finished in 0.308 seconds with exit status 0 (successful).
+  INFO Copying to /var/www/vhosts/kei-sport-backend/shared/.env.local
+ DEBUG Uploading .env.kei.local 0.0%
+  INFO Uploading .env.kei.local 100.0%
+  INFO ---------------------------------------------------------------------------
+  INFO START 2021-11-10 12:42:34 +0100 cap local deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [bc7e192e] Running /usr/bin/env mkdir -p /tmp as vwp@kei-sport-backend.kei.dev
+ DEBUG [bc7e192e] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /tmp )
+  INFO [bc7e192e] Finished in 0.330 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-c73769829191e2b91737.sh 0.0%
+  INFO Uploading /tmp/git-ssh-c73769829191e2b91737.sh 100.0%
+  INFO [21b826b6] Running /usr/bin/env chmod 700 /tmp/git-ssh-c73769829191e2b91737.sh as vwp@kei-sport-backend.kei.dev
+ DEBUG [21b826b6] Command: ( export APP_ENV="prod" ; /usr/bin/env chmod 700 /tmp/git-ssh-c73769829191e2b91737.sh )
+  INFO [21b826b6] Finished in 0.067 seconds with exit status 0 (successful).
+  INFO [407462f1] Running /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD as vwp@kei-sport-backend.kei.dev
+ DEBUG [407462f1] Command: ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env git ls-remote git@github.com:SJHelmhout/kei-sport-backend.git HEAD )
+ DEBUG [407462f1] 	a4c0e79717b831a3f65885266604d5c84d6d8bcb	HEAD
+  INFO [407462f1] Finished in 1.198 seconds with exit status 0 (successful).
+  INFO [d35d044b] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases as vwp@kei-sport-backend.kei.dev
+ DEBUG [d35d044b] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared /var/www/vhosts/kei-sport-backend/releases )
+  INFO [d35d044b] Finished in 0.042 seconds with exit status 0 (successful).
+  INFO [74845fff] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared/config/jwt as vwp@kei-sport-backend.kei.dev
+ DEBUG [74845fff] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared/config/jwt )
+  INFO [74845fff] Finished in 0.065 seconds with exit status 0 (successful).
+  INFO [428ca561] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared as vwp@kei-sport-backend.kei.dev
+ DEBUG [428ca561] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/shared )
+  INFO [428ca561] Finished in 0.064 seconds with exit status 0 (successful).
+ DEBUG [72b5a7d1] Running [ -f /var/www/vhosts/kei-sport-backend/shared/.env.local ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [72b5a7d1] Command: [ -f /var/www/vhosts/kei-sport-backend/shared/.env.local ]
+ DEBUG [72b5a7d1] Finished in 0.059 seconds with exit status 0 (successful).
+ DEBUG [1cacb6bf] Running [ -f /var/www/vhosts/kei-sport-backend/current/REVISION ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [1cacb6bf] Command: [ -f /var/www/vhosts/kei-sport-backend/current/REVISION ]
+ DEBUG [1cacb6bf] Finished in 0.067 seconds with exit status 1 (failed).
+ DEBUG [dca836c7] Running [ -f /var/www/vhosts/kei-sport-backend/repo/HEAD ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [dca836c7] Command: [ -f /var/www/vhosts/kei-sport-backend/repo/HEAD ]
+ DEBUG [dca836c7] Finished in 0.066 seconds with exit status 1 (failed).
+ DEBUG [ae19113e] Running if test ! -d /var/www/vhosts/kei-sport-backend; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend'" 1>&2; false; fi as vwp@kei-sport-backend.kei.dev
+ DEBUG [ae19113e] Command: if test ! -d /var/www/vhosts/kei-sport-backend; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend'" 1>&2; false; fi
+ DEBUG [ae19113e] Finished in 0.062 seconds with exit status 0 (successful).
+  INFO [7017a05c] Running /usr/bin/env git clone --mirror git@github.com:SJHelmhout/kei-sport-backend.git /var/www/vhosts/kei-sport-backend/repo as vwp@kei-sport-backend.kei.dev
+ DEBUG [7017a05c] Command: cd /var/www/vhosts/kei-sport-backend && ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env git clone --mirror git@github.com:SJHelmhout/kei-sport-backend.git /var/www/vhosts/kei-sport-backend/repo )
+ DEBUG [7017a05c] 	Cloning into bare repository '/var/www/vhosts/kei-sport-backend/repo'...
+  INFO [7017a05c] Finished in 1.622 seconds with exit status 0 (successful).
+ DEBUG [a538d2ff] Running if test ! -d /var/www/vhosts/kei-sport-backend/repo; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/repo'" 1>&2; false; fi as vwp@kei-sport-backend.kei.dev
+ DEBUG [a538d2ff] Command: if test ! -d /var/www/vhosts/kei-sport-backend/repo; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/repo'" 1>&2; false; fi
+ DEBUG [a538d2ff] Finished in 0.028 seconds with exit status 0 (successful).
+  INFO [9f5b27f3] Running /usr/bin/env git remote set-url origin git@github.com:SJHelmhout/kei-sport-backend.git as vwp@kei-sport-backend.kei.dev
+ DEBUG [9f5b27f3] Command: cd /var/www/vhosts/kei-sport-backend/repo && ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env git remote set-url origin git@github.com:SJHelmhout/kei-sport-backend.git )
+  INFO [9f5b27f3] Finished in 0.065 seconds with exit status 0 (successful).
+  INFO [7ad9cc22] Running /usr/bin/env git remote update --prune as vwp@kei-sport-backend.kei.dev
+ DEBUG [7ad9cc22] Command: cd /var/www/vhosts/kei-sport-backend/repo && ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [7ad9cc22] 	Fetching origin
+  INFO [7ad9cc22] Finished in 1.260 seconds with exit status 0 (successful).
+ DEBUG [a8c73d4b] Running if test ! -d /var/www/vhosts/kei-sport-backend/repo; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/repo'" 1>&2; false; fi as vwp@kei-sport-backend.kei.dev
+ DEBUG [a8c73d4b] Command: if test ! -d /var/www/vhosts/kei-sport-backend/repo; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/repo'" 1>&2; false; fi
+ DEBUG [a8c73d4b] Finished in 0.034 seconds with exit status 0 (successful).
+  INFO [4eee2c7b] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/releases/20211110114236 as vwp@kei-sport-backend.kei.dev
+ DEBUG [4eee2c7b] Command: cd /var/www/vhosts/kei-sport-backend/repo && ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/releases/20211110114236 )
+  INFO [4eee2c7b] Finished in 0.060 seconds with exit status 0 (successful).
+  INFO [472d6237] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/vhosts/kei-sport-backend/releases/20211110114236 as vwp@kei-sport-backend.kei.dev
+ DEBUG [472d6237] Command: cd /var/www/vhosts/kei-sport-backend/repo && ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /var/www/vhosts/kei-sport-backend/releases/20211110114236 )
+  INFO [472d6237] Finished in 0.065 seconds with exit status 0 (successful).
+ DEBUG [e5fc803d] Running if test ! -d /var/www/vhosts/kei-sport-backend/repo; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/repo'" 1>&2; false; fi as vwp@kei-sport-backend.kei.dev
+ DEBUG [e5fc803d] Command: if test ! -d /var/www/vhosts/kei-sport-backend/repo; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/repo'" 1>&2; false; fi
+ DEBUG [e5fc803d] Finished in 0.065 seconds with exit status 0 (successful).
+ DEBUG [dcf82efc] Running /usr/bin/env git rev-list --max-count=1 master as vwp@kei-sport-backend.kei.dev
+ DEBUG [dcf82efc] Command: cd /var/www/vhosts/kei-sport-backend/repo && ( export APP_ENV="prod" GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-c73769829191e2b91737.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [dcf82efc] 	a4c0e79717b831a3f65885266604d5c84d6d8bcb
+ DEBUG [dcf82efc] Finished in 0.062 seconds with exit status 0 (successful).
+ DEBUG [e7454158] Running if test ! -d /var/www/vhosts/kei-sport-backend/releases/20211110114236; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/releases/20211110114236'" 1>&2; false; fi as vwp@kei-sport-backend.kei.dev
+ DEBUG [e7454158] Command: if test ! -d /var/www/vhosts/kei-sport-backend/releases/20211110114236; then echo "Directory does not exist '/var/www/vhosts/kei-sport-backend/releases/20211110114236'" 1>&2; false; fi
+ DEBUG [e7454158] Finished in 0.067 seconds with exit status 0 (successful).
+  INFO [56199f41] Running /usr/bin/env echo "a4c0e79717b831a3f65885266604d5c84d6d8bcb" > REVISION as vwp@kei-sport-backend.kei.dev
+ DEBUG [56199f41] Command: cd /var/www/vhosts/kei-sport-backend/releases/20211110114236 && ( export APP_ENV="prod" ; /usr/bin/env echo "a4c0e79717b831a3f65885266604d5c84d6d8bcb" > REVISION )
+  INFO [56199f41] Finished in 0.067 seconds with exit status 0 (successful).
+  INFO [902371e1] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/releases/20211110114236 as vwp@kei-sport-backend.kei.dev
+ DEBUG [902371e1] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/releases/20211110114236 )
+  INFO [902371e1] Finished in 0.057 seconds with exit status 0 (successful).
+ DEBUG [4a51763d] Running [ -L /var/www/vhosts/kei-sport-backend/releases/20211110114236/.env.local ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [4a51763d] Command: [ -L /var/www/vhosts/kei-sport-backend/releases/20211110114236/.env.local ]
+ DEBUG [4a51763d] Finished in 0.066 seconds with exit status 1 (failed).
+ DEBUG [10845cd1] Running [ -f /var/www/vhosts/kei-sport-backend/releases/20211110114236/.env.local ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [10845cd1] Command: [ -f /var/www/vhosts/kei-sport-backend/releases/20211110114236/.env.local ]
+ DEBUG [10845cd1] Finished in 0.068 seconds with exit status 1 (failed).
+  INFO [82048095] Running /usr/bin/env ln -s /var/www/vhosts/kei-sport-backend/shared/.env.local /var/www/vhosts/kei-sport-backend/releases/20211110114236/.env.local as vwp@kei-sport-backend.kei.dev
+ DEBUG [82048095] Command: ( export APP_ENV="prod" ; /usr/bin/env ln -s /var/www/vhosts/kei-sport-backend/shared/.env.local /var/www/vhosts/kei-sport-backend/releases/20211110114236/.env.local )
+  INFO [82048095] Finished in 0.060 seconds with exit status 0 (successful).
+  INFO [f3208176] Running /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/releases/20211110114236/config as vwp@kei-sport-backend.kei.dev
+ DEBUG [f3208176] Command: ( export APP_ENV="prod" ; /usr/bin/env mkdir -p /var/www/vhosts/kei-sport-backend/releases/20211110114236/config )
+  INFO [f3208176] Finished in 0.063 seconds with exit status 0 (successful).
+ DEBUG [8ee72910] Running [ -L /var/www/vhosts/kei-sport-backend/releases/20211110114236/config/jwt ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [8ee72910] Command: [ -L /var/www/vhosts/kei-sport-backend/releases/20211110114236/config/jwt ]
+ DEBUG [8ee72910] Finished in 0.066 seconds with exit status 1 (failed).
+ DEBUG [3e994aa9] Running [ -d /var/www/vhosts/kei-sport-backend/releases/20211110114236/config/jwt ] as vwp@kei-sport-backend.kei.dev
+ DEBUG [3e994aa9] Command: [ -d /var/www/vhosts/kei-sport-backend/releases/20211110114236/config/jwt ]
+ DEBUG [3e994aa9] Finished in 0.062 seconds with exit status 1 (failed).
+  INFO [df803549] Running /usr/bin/env ln -s /var/www/vhosts/kei-sport-backend/shared/config/jwt /var/www/vhosts/kei-sport-backend/releases/20211110114236/config/jwt as vwp@kei-sport-backend.kei.dev
+ DEBUG [df803549] Command: ( export APP_ENV="prod" ; /usr/bin/env ln -s /var/www/vhosts/kei-sport-backend/shared/config/jwt /var/www/vhosts/kei-sport-backend/releases/20211110114236/config/jwt )
+  INFO [df803549] Finished in 0.067 seconds with exit status 0 (successful).
+  INFO [bd80ae37] Running /usr/bin/env ln -s /var/www/vhosts/kei-sport-backend/releases/20211110114236 /var/www/vhosts/kei-sport-backend/releases/current as vwp@kei-sport-backend.kei.dev
+ DEBUG [bd80ae37] Command: ( export APP_ENV="prod" ; /usr/bin/env ln -s /var/www/vhosts/kei-sport-backend/releases/20211110114236 /var/www/vhosts/kei-sport-backend/releases/current )
+  INFO [bd80ae37] Finished in 0.064 seconds with exit status 0 (successful).
+  INFO [c7cab792] Running /usr/bin/env mv /var/www/vhosts/kei-sport-backend/releases/current /var/www/vhosts/kei-sport-backend as vwp@kei-sport-backend.kei.dev
+ DEBUG [c7cab792] Command: ( export APP_ENV="prod" ; /usr/bin/env mv /var/www/vhosts/kei-sport-backend/releases/current /var/www/vhosts/kei-sport-backend )
+  INFO [c7cab792] Finished in 0.061 seconds with exit status 0 (successful).
+  INFO [2c947f09] Running sudo systemctl reload php7.4-fpm.service as vwp@kei-sport-backend.kei.dev
+ DEBUG [2c947f09] Command: sudo systemctl reload php7.4-fpm.service
+ DEBUG [2c947f09] 	sudo: no tty present and no askpass program specified

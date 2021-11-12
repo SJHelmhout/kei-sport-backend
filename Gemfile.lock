@@ -3,6 +3,8 @@ GEM
   specs:
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
+    bcrypt_pbkdf (1.1.0)
+    bcrypt_pbkdf (1.1.0-x64-mingw32)
     capistrano (3.16.0)
       airbrussh (>= 1.0.0)
       i18n
@@ -19,6 +21,7 @@ GEM
     capistrano-yarn (2.0.2)
       capistrano (~> 3.0)
     concurrent-ruby (1.1.9)
+    ed25519 (1.2.4)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     net-scp (3.0.0)
@@ -30,12 +33,15 @@ GEM
       net-ssh (>= 2.8.0)
 
 PLATFORMS
+  x64-mingw32
   x86_64-linux
 
 DEPENDENCIES
-  capistrano (~> 3.11)
+  bcrypt_pbkdf
+  capistrano (~> 3.16)
   capistrano-symfony (~> 2.0.0.pre.alfa2)
   capistrano-yarn
+  ed25519
 
 BUNDLED WITH
    2.2.5

@@ -13,7 +13,7 @@ namespace :cache do
 
   task :fpm_reload do
     on roles(:web) do
-      execute "sudo systemctl reload php7.3-fpm.service"
+      execute "sudo systemctl reload php7.4-fpm.service"
     end
   end
 end
