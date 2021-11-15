@@ -15,3 +15,10 @@ api_login_check:
 # Refresh route
 gesdinet_jwt_refresh_token:
   path: /token/refresh
+  methods: ['POST']
+  controller: gesdinet.jwtrefreshtoken::refresh
+
+generate_twoFactorCode:
+  path: /api/generate_2fa
+  methods: ['GET']
+  controller: App\Controller\Api\TwoFactorLogin\CodeGeneratorController

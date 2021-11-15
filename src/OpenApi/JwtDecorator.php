@@ -31,6 +31,14 @@ final class JwtDecorator implements OpenApiFactoryInterface
                     'type' => 'string',
                     'readOnly' => true,
                 ],
+                'id' => [
+                    'type' => 'string',
+                    'readOnly' => true,
+                ],
+                'refreshToken' => [
+                    'type' => 'string',
+                    'readOnly' => true,
+                ],
             ],
         ]);
         $schemas['Credentials'] = new \ArrayObject([
@@ -54,7 +62,7 @@ final class JwtDecorator implements OpenApiFactoryInterface
                  ['Token'],
                  [
                     '200' => [
-                        'description' => 'Get JWT token',
+                        'description' => 'Get JWT token, userID and refreshToken',
                         'content' => [
                             'application/json' => [
                                 'schema' => [

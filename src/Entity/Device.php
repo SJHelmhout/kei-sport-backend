@@ -7,9 +7,13 @@ use App\Repository\DeviceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups" = {"device:read"}, "enable_max_depth" = true },
+ *     denormalizationContext={"groups" = {"workout:write"}, "enable_max_depth" = true },
+ * )
  * @ORM\Entity(repositoryClass=DeviceRepository::class)
  */
 class Device
@@ -18,21 +22,25 @@ class Device
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"device:read"})
      */
     private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"device:read", "workout:write"})
      */
     private ?string $name;
 
     /**
      * @ORM\Column(type="string", length=511, nullable=true)
+     * @Groups({"device:read", "workout:write"})
      */
     private ?string $imageSrc = null;
 
     /**
      * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="device", orphanRemoval=true)
+     * @Groups({"device:read"})
      */
     private Collection $exercises;
 

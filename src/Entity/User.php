@@ -11,11 +11,21 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "post"={"security"="is_granted('ROLE_ADMIN')"},
+ *     },
+ *     itemOperations={
+ *          "get"={"security"="is_granted('get_item', object)"},
+ *          "patch"={"security"="is_granted('patch', object)"},
+ *     },
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
+    //TODO: Velden die niet opgehaald mogen worden bij GET-requests niet meegeven.
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -75,6 +85,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="user", orphanRemoval=true)
      */
     private Collection $exerciseLogs;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Workout::class)
+     */
+    private ?Workout $selectedWorkout;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private ?string $twoFactorCode;
 
     public function __construct()
     {
@@ -326,6 +346,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $exerciseLog->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSelectedWorkout(): ?Workout
+    {
+        return $this->selectedWorkout;
+    }
+
+    public function setSelectedWorkout(?Workout $selectedWorkout): self
+    {
+        $this->selectedWorkout = $selectedWorkout;
+
+        return $this;
+    }
+
+    public function getTwoFactorCode(): ?string
+    {
+        return $this->twoFactorCode;
+    }
+
+    public function setTwoFactorCode(?string $twoFactorCode): self
+    {
+        $this->twoFactorCode = $twoFactorCode;
 
         return $this;
     }

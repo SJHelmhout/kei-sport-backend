@@ -3,11 +3,10 @@
 namespace App\DataFixtures;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Device;
 
-class DeviceFixtures extends Fixture implements FixtureGroupInterface
+class DeviceFixtures extends Fixture
 {
     public const DEVICES_REFERENCE = 'devices';
 
@@ -31,16 +30,7 @@ class DeviceFixtures extends Fixture implements FixtureGroupInterface
             $manager->persist($device);
         }
 
-
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $this->addReference(self::DEVICES_REFERENCE, $device);
+        $this->setReference(self::DEVICES_REFERENCE, $device);
         $manager->flush();
-    }
-
-    public static function getGroups(): array
-    {
-        return ['devices'];
     }
 }

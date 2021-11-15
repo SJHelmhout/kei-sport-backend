@@ -3,15 +3,15 @@
 namespace App\DataFixtures;
 
 use App\Entity\Circuit;
-use App\Entity\Exercise;
+use App\Entity\Workout;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use App\Entity\Device;
 
-class CircuitFixtures extends Fixture implements FixtureGroupInterface, DependentFixtureInterface
+class CircuitFixtures extends Fixture implements DependentFixtureInterface
 {
+    public const CIRCUITS_REFERENCE = 'circuits';
+
 
     public function load(ObjectManager $manager)
     {
@@ -19,39 +19,26 @@ class CircuitFixtures extends Fixture implements FixtureGroupInterface, Dependen
         for ($x=1; $x<11; $x++){
             $circuitName = "Circuit " . $x;
             $description = "Beschrijving nummer " . $x;
-//            $exercise = $this->getReference(ExerciseFixtures::EXERCISES_REFERENCE);
 
-            $exercises = array();
-            for ($y=1; $y<=rand(1,4); $y++){
-                array_push($exercises, $manager->find(Exercise::class, rand(1,10)));
-            }
             $circuit = new Circuit();
             $circuit->setName($circuitName);
             $circuit->setDescription($description);
-            foreach ($exercises as $exercise){
-                $circuit->addExercise($exercise);
-            }
+            /** @var Workout $workout */
+            $workout = $this->getReference('workouts');
+            $circuit->setWorkout($workout);
 
             $manager->persist($circuit);
         }
 
-        // $product = new Product();
-        // $manager->persist($product);
-
+        $this->setReference(self::CIRCUITS_REFERENCE, $circuit);
 
         $manager->flush();
-    }
-
-    public static function getGroups(): array
-    {
-        return ['circuits'];
     }
 
     public function getDependencies(): array
     {
         return [
-            ExerciseFixtures::class,
-            DeviceFixtures::class,
+            WorkoutFixtures::class,
         ];
     }
 }

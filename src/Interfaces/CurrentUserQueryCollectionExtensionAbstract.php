@@ -41,8 +41,9 @@ abstract class CurrentUserQueryCollectionExtensionAbstract implements QueryColle
 
         $rootAlias = $queryBuilder->getRootAliases()[0];
         $user = $this->security->getUser();
+        $this->security->getToken();
         $queryBuilder->andWhere(sprintf('%s.user = :current_user', $rootAlias));
-        $queryBuilder->setParameter('current_user', $user->getId());
+        $queryBuilder->setParameter('current_user', $user->getUserIdentifier());
     }
 
 

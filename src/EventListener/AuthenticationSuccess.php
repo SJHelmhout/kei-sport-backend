@@ -7,9 +7,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class AuthenticationSuccess
 {
-    // src/App/EventListener/AuthenticationSuccessListener.php
-
-
     /**
      * @param AuthenticationSuccessEvent $event
      */
