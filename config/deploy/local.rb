@@ -10,6 +10,8 @@ set :file_permissions_paths, ['var']
 set :assets_install_path, "public"
 
 set :composer_install_flags, "--no-dev --prefer-dist --no-interaction --optimize-autoloader"
+set :composer_download_url, "https://getcomposer.org/installer"
+set :composer_version, '2.1.12-alpha8'
 
 after "deploy:publishing", "cache:fpm_reload"
 after "deploy:published", "deploy:migrate"
