@@ -11,10 +11,16 @@ set :assets_install_path, "public"
 
 set :composer_install_flags, "--no-dev --prefer-dist --no-interaction --optimize-autoloader"
 set :composer_download_url, "https://getcomposer.org/installer"
-set :composer_version, '2.1.12-alpha8'
+set :composer_version, '2.1.12'
 
 after "deploy:publishing", "cache:fpm_reload"
 after "deploy:published", "deploy:migrate"
+
+SSHKit.config.command_map[:composer] = "php #{shared_path.join("composer.phar")}"
+
+namespace :deploy do
+  after :starting, 'composer:install_executable'
+end
 
 set :default_env, {
     'APP_ENV' => 'prod',
