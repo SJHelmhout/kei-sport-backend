@@ -48,7 +48,7 @@ class Exercise
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
-    private ?int $duration;
+    private ?int $duration = null;
 
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="exercise", orphanRemoval=true)

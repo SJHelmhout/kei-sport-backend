@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ApiResource(
  *     collectionOperations={
  *          "get"={"security"="is_granted('ROLE_ADMIN')"},
- *          "post"={"security"="is_granted('ROLE_ADMIN')"},
+ *          "post",
  *     },
  *     itemOperations={
  *          "get"={"security"="is_granted('get_item', object)"},
