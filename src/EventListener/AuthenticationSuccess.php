@@ -20,9 +20,6 @@ class AuthenticationSuccess
         }
 
         $data['id'] = $user->getUserIdentifier();
-        //TODO: route aanmaken http://keisport.sjoerd/api/users/me
-        //Die herkent aan de JWTToken welke user om zijn account vraagt
-
         $event->setData($data);
     }
 

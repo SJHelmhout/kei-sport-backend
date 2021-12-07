@@ -39,7 +39,7 @@ class Session
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="sessions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn()
      */
     private Workout $workout;
 

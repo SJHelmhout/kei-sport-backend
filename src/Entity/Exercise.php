@@ -42,7 +42,7 @@ class Exercise
      * @ORM\Column(type="integer", nullable=true)
      * @Groups({"workout:read", "workout:write", "exercise:read"})
      */
-    private ?int $reps;
+    private ?int $reps = null;
 
     /**
      * @ORM\Column(type="integer", nullable=true)

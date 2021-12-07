@@ -5,6 +5,7 @@ namespace App\Interfaces;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryCollectionExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Extension\QueryItemExtensionInterface;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
+use App\Entity\Session;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Security\Core\Security;
 
@@ -39,12 +40,17 @@ abstract class CurrentUserQueryCollectionExtensionAbstract implements QueryColle
             return;
         }
 
-        $rootAlias = $queryBuilder->getRootAliases()[0];
-        $user = $this->security->getUser();
-        $this->security->getToken();
-        $queryBuilder->andWhere(sprintf('%s.user = :current_user', $rootAlias));
-        $queryBuilder->setParameter('current_user', $user->getUserIdentifier());
+        if ($this->getResourceClass() == Session::class){
+            $queryBuilder
+                ->innerJoin('o.users', 'u', 'WITH', 'u.id = :userParameterName')
+                ->setParameter('userParameterName', $this->security->getUser())
+            ;
+        } else {
+            $rootAlias = $queryBuilder->getRootAliases()[0];
+            $user = $this->security->getUser();
+            $this->security->getToken();
+            $queryBuilder->andWhere(sprintf('%s.user = :current_user', $rootAlias));
+            $queryBuilder->setParameter('current_user', $user->getUserIdentifier());
+        }
     }
-
-
 }

@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Session;
+use App\Entity\User;
 use App\Entity\Workout;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -35,12 +36,16 @@ class SessionFixtures extends Fixture implements DependentFixtureInterface
             $endTime->modify("+{$minutesToAdd} minutes");
             /** @var Workout $workout */
             $workout = $this->getReference('workouts');
+            /** @var User $user */
+            $user = ($this->getReference("users"));
+
 
             $session = new Session();
             $session
                 ->setStartTime($startTime)
                 ->setEndTime($endTime)
                 ->setWorkout($workout)
+                ->addUser($user)
                 ->setIsActive(false)
             ;
 
