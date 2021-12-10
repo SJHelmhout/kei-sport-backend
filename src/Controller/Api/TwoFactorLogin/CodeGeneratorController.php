@@ -27,10 +27,9 @@ class CodeGeneratorController
      * @throws Exception
      */
     public function getRandomCode(): string {
-        $code = [];
-        $keyspace = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        array_push($code, $keyspace[random_int(0, 25)]);
-        array_push($code, random_int(0, 9), random_int(0, 9));
+        for ($i = 0; $i < 4; $i++){
+            $code[] = random_int(0, 9);
+        }
         return implode('', $code);
     }
 

@@ -53,5 +53,6 @@ services:
         decorates: 'api_platform.openapi.factory'
         arguments: [ '@.inner' ]
 
-#    App\Controller\Api\RecentWorkoutsChartController:
-#        tags: [controller.service_arguments]
+    App\OpenApi\GymLoginDecorator:
+        decorates: 'api_platform.openapi.factory'
+        arguments: [ '@.inner' ]
