@@ -41,7 +41,6 @@ class Circuit
 
     /**
      * @ORM\OneToMany(targetEntity=CircuitLog::class, mappedBy="circuit", orphanRemoval=true)
-     * @Groups({"workout:read", "circuit:read"})
      */
     private Collection $circuitLogs;
 
