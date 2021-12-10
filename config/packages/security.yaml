@@ -13,7 +13,6 @@ security:
         user:
             entity:
                 class: App\Entity\User
-                property: email
     firewalls:
         api_token_refresh:
             pattern: ^/token/refresh
@@ -30,12 +29,10 @@ security:
                 password_path: password
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
-            # custom_authenticator: App\Security\LoginFormAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
                 #target: api/login
-
         api:
             pattern: ^/api
             stateless: true

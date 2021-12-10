@@ -6,6 +6,11 @@ api_login_check:
   path: /login_check
   methods: ['POST']
 
+api_gym_login:
+  path: /gym_login
+  methods: ['POST']
+  controller: App\Controller\Api\TwoFactorLogin\GymLoginController
+
 # Login route
 #login:
 #  path:       /login
