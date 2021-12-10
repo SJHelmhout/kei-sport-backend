@@ -40,7 +40,6 @@ class Device
 
     /**
      * @ORM\OneToMany(targetEntity=Exercise::class, mappedBy="device", orphanRemoval=true)
-     * @Groups({"device:read"})
      */
     private Collection $exercises;
 

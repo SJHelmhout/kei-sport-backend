@@ -41,7 +41,6 @@ class Workout
 
     /**
      * @ORM\OneToMany(targetEntity=WorkoutLog::class, mappedBy="workout", orphanRemoval=true)
-     * @Groups({"workout:read"})
      */
     private Collection $workoutLogs;
 
@@ -54,7 +53,6 @@ class Workout
 
     /**
      * @ORM\OneToMany(targetEntity=Session::class, mappedBy="workout", orphanRemoval=true)
-     * @Groups({"workout:read"})
      */
     private Collection $sessions;
 

@@ -52,7 +52,6 @@ class Exercise
 
     /**
      * @ORM\OneToMany(targetEntity=ExerciseLog::class, mappedBy="exercise", orphanRemoval=true)
-     * @Groups({"workout:read", "exercise:read"})
      */
     private Collection $exerciseLogs;
 
