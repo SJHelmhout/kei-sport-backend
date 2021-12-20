@@ -28,6 +28,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     //TODO: Velden die niet opgehaald mogen worden bij GET-requests niet meegeven.
+
+    //HOI
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
