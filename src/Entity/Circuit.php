@@ -23,7 +23,7 @@ class Circuit
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"workout:read"})
+     * @Groups({"workout:read", "circuit:read"})
      */
     private ?int $id;
 
