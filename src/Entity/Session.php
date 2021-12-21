@@ -10,7 +10,16 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *     "find_my_session"={
+ *            "method"="GET",
+ *            "path"="/sessions/find_my_session",
+ *            "controller"=FindMySessionController::class,
+ *            "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *           }
+ *        }
+ * )
  * @ORM\Entity(repositoryClass=SessionRepository::class)
  */
 class Session
