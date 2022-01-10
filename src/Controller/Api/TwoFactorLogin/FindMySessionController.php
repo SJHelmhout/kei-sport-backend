@@ -2,6 +2,7 @@
 
 namespace App\Controller\Api\TwoFactorLogin;
 
+use App\Entity\Session;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Security;
@@ -21,17 +22,16 @@ class FindMySessionController
 
     public function __invoke(): JsonResponse
     {
-//        $user = $this->security->getUser();
-//        $queryBuilder = $this->entityManager
-//            ->getRepository(Session::class)
-//            ->createQueryBuilder('o')
-//            ->select("o")
+        $user = $this->security->getUser();
+        $queryBuilder = $this->entityManager
+            ->getRepository(Session::class)
+            ->createQueryBuilder('o')
+            ->select("o.id")
 //            ->innerJoin('o.users', 'u', 'WITH', 'u.id = :userParameterName')
 //            ->setParameter('userParameterName', $user)
-//            ->where("o.is_active = 1")
-//        ;
-//        $sessions = $queryBuilder->getQuery()->getFirstResult();
-//        return new JsonResponse($sessions);
-        return new JsonResponse("Lol");
+//            ->where("o.id = 1")
+        ;
+        $sessions = $queryBuilder->getQuery()->getFirstResult();
+        return new JsonResponse($sessions);
     }
 }
