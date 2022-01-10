@@ -8,17 +8,27 @@ use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Controller\Api\TwoFactorLogin\FindMySessionController;
+use App\Controller\Api\Visualisation\Graphs\CurrentActiveSessionsController;
 
 /**
  * @ApiResource(
  *     collectionOperations={
- *     "find_my_session"={
- *            "method"="GET",
- *            "path"="/sessions/find_my_session",
- *            "controller"=FindMySessionController::class,
- *            "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
- *           }
- *        }
+ *          "get",
+ *          "post",
+ *          "find_my_session"={
+ *              "method"="GET",
+ *              "path"="/sessions/find_my_session",
+ *              "controller"=FindMySessionController::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *         },
+ *         "currently_active_sessions"={
+ *              "method"="GET",
+ *              "path"="/sessions/currently_active_sessions",
+ *              "controller"=CurrentActiveSessionsController::class,
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *         },
+ *     },
  * )
  * @ORM\Entity(repositoryClass=SessionRepository::class)
  */

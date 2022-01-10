@@ -11,27 +11,46 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Controller\Api\Visualisation\Graphs\RecentWorkoutsChartController;
 use App\Controller\Api\Visualisation\Graphs\MostPerformedWorkoutsController;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\Api\Visualisation\Graphs\WorkoutProgressController;
+use App\Controller\Api\Visualisation\Graphs\AdminTopFiveWorkoutsController;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups" = {"workoutLog:read"}, "enable_max_depth" = true },
- *     denormalizationContext={"groups" = {"workoutLog:write"}, "enable_max_depth" = true },
- *     collectionOperations={
- *     "get",
- *     "post",
- *     "recent_workouts"={
+ *      normalizationContext={"groups" = {"workoutLog:read"}, "enable_max_depth" = true },
+ *      denormalizationContext={"groups" = {"workoutLog:write"}, "enable_max_depth" = true },
+ *      collectionOperations={
+ *          "get",
+ *          "post",
+ *          "recent_workouts"={
  *              "method"="GET",
  *              "path"="/workout_logs/recent_workouts",
- *             "controller"=RecentWorkoutsChartController::class,
+ *              "controller"=RecentWorkoutsChartController::class,
  *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
  *          },
- *     "most_performed_workouts"={
- *            "method"="GET",
- *            "path"="/workout_logs/most_performed",
- *            "controller"=MostPerformedWorkoutsController::class,
- *            "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
- *           }
- *     }
+ *          "most_performed_workouts"={
+ *              "method"="GET",
+ *              "path"="/workout_logs/most_performed",
+ *              "controller"=MostPerformedWorkoutsController::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          },
+ *          "top_five_workouts"={
+ *              "method"="GET",
+ *              "path"="/workout_logs/top_five_workouts",
+ *              "controller"=AdminTopFiveWorkoutsController::class,
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *          }
+ *     },
+ *     itemOperations={
+ *          "get",
+ *          "patch",
+ *          "put",
+ *          "progression"={
+ *              "method"="GET",
+ *              "path"="/workout_logs/progress",
+ *              "controller"=WorkoutProgressController::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          }
+ *     },
  * )
  * @ORM\Entity(repositoryClass=WorkoutLogRepository::class)
  */
