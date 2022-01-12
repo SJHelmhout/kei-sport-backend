@@ -28,8 +28,8 @@ class FindMySessionDecorator implements OpenApiFactoryInterface
         $schemas['FindMySession'] = new \ArrayObject([
             'type' => 'object',
             'properties' => [
-                'Session' => [
-                    'type' => 'object',
+                'id' => [
+                    'type' => 'integer',
                     'readOnly' => true,
                 ],
             ],
@@ -37,7 +37,7 @@ class FindMySessionDecorator implements OpenApiFactoryInterface
 
         $pathItem = new Model\PathItem(
             'Session', "Get the user's planned session", "", new Model\Operation(
-            'getSessionItem',
+            'getPlannedSession',
             ['Session'],
             [
                 '200' => [
@@ -45,7 +45,7 @@ class FindMySessionDecorator implements OpenApiFactoryInterface
                     'content' => [
                         'application/json' => [
                             'schema' => [
-                                '$ref' => '#/components/schemas/Session',
+                                '$ref' => '#/components/schemas/FindMySession',
                             ],
                         ],
                     ],

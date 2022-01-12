@@ -27,11 +27,11 @@ class FindMySessionController
             ->getRepository(Session::class)
             ->createQueryBuilder('o')
             ->select("o.id")
-//            ->innerJoin('o.users', 'u', 'WITH', 'u.id = :userParameterName')
-//            ->setParameter('userParameterName', $user)
-//            ->where("o.id = 1")
+            ->where("o.isActive = 1")
+            ->innerJoin('o.users', 'u', 'WITH', 'u.id = :userParameterName')
+            ->setParameter('userParameterName', $user)
         ;
-        $sessions = $queryBuilder->getQuery()->getFirstResult();
-        return new JsonResponse($sessions);
+        $sessions = $queryBuilder->getQuery()->getResult();
+        return new JsonResponse(end($sessions));
     }
 }

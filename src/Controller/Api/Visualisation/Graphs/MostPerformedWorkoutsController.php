@@ -23,6 +23,7 @@ class MostPerformedWorkoutsController
     }
     public function __invoke(): JsonResponse
     {
+        //TODO: Verstuur ook de workout id mee en bak deze in de chart in.
         $labels = [];
         $chartData = [];
         //select workout_log.workout_id, COUNT(*) from workout_log where workout_log.user_id = 4 GROUP BY workout_log.workout_id;
@@ -38,8 +39,8 @@ class MostPerformedWorkoutsController
         ;
         $result = $queryBuilder->getQuery()->setParameter("user", $this->security->getUser())->getResult();
         foreach ($result as $value){
-            array_push($labels, $value["name"]);
-            array_push($chartData, $value["amount"]);
+            $labels[] = $value["name"];
+            $chartData[] = $value["amount"];
         }
         return new JsonResponse([$labels, $chartData]);
     }

@@ -3,7 +3,6 @@
 namespace App\Controller\Api\TwoFactorLogin;
 
 use App\Repository\UserRepository;
-use Doctrine\ORM\NonUniqueResultException;
 use Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;

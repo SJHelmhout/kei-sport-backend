@@ -52,7 +52,7 @@ final class GymLoginDecorator implements OpenApiFactoryInterface
         ]);
 
         $pathItem = new Model\PathItem(
-            'JWT Token', "", "", null, null,
+            'JWT Token', "Login endpoint for the Gym", "", null, null,
             new Model\Operation(
                 'postGymCredentialsItem',
                  ['Token'],

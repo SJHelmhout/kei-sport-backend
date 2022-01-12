@@ -56,3 +56,7 @@ services:
     App\OpenApi\GymLoginDecorator:
         decorates: 'api_platform.openapi.factory'
         arguments: [ '@.inner' ]
+
+    App\OpenApi\FindMySessionDecorator:
+        decorates: 'api_platform.openapi.factory'
+        arguments: [ '@.inner' ]
