@@ -10,6 +10,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\Api\TwoFactorLogin\FindMySessionController;
 use App\Controller\Api\Visualisation\Graphs\CurrentActiveSessionsController;
+use App\Controller\JoinSession;
+use App\Controller\LeaveSession;
+use App\Controller\InitSession;
+use App\Controller\StartSession;
+use App\Controller\EndSession;
 
 /**
  * @ApiResource(
@@ -29,11 +34,50 @@ use App\Controller\Api\Visualisation\Graphs\CurrentActiveSessionsController;
  *              "security"="is_granted('ROLE_ADMIN')",
  *         },
  *     },
+ *     itemOperations={
+ *         "get",
+ *         "join_session"={
+ *              "method"="PATCH",
+ *              "path"="/sessions/{id}/join",
+ *              "controller"=JoinSession::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *              "read"=false,
+ *          },
+ *          "leave_session"={
+ *              "method"="PATCH",
+ *              "path"="/sessions/{id}/leave",
+ *              "controller"=LeaveSession::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          },
+ *          "start_session"={
+ *              "method"="PATCH",
+ *              "path"="/sessions/{id}/start",
+ *              "controller"=StartSession::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          },
+ *          "end_session"={
+ *              "method"="PATCH",
+ *              "path"="/sessions/{id}/end",
+ *              "controller"=EndSession::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          },
+ *          "init_session"={
+ *              "method"="PATCH",
+ *              "path"="/sessions/{id}/init",
+ *              "controller"=InitSession::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          },
+ *     },
  * )
  * @ORM\Entity(repositoryClass=SessionRepository::class)
  */
 class Session
 {
+    const STATUS_SESSION_CREATED = 'session_created';
+    const STATUS_SESSION_WAITING_FOR_PARTICIPANTS = "session_waiting_for_participants";
+    const STATUS_SESSION_STARTED = "session_started";
+    const STATUS_SESSION_FINISHED = "session_finished";
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -42,14 +86,14 @@ class Session
     private ?int $id;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private DateTimeInterface $startTime;
+    private ?DateTimeInterface $startTime = null;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private DateTimeInterface $endTime;
+    private ?DateTimeInterface $endTime = null;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sessions")
@@ -63,10 +107,10 @@ class Session
     private Workout $workout;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="string", length=255)
      */
-    private ?bool $isActive;
-
+    private String $status;
+    
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -137,15 +181,13 @@ class Session
         return $this;
     }
 
-    public function getIsActive(): ?bool
+    public function getStatus(): string
     {
-        return $this->isActive;
+        return $this->status;
     }
 
-    public function setIsActive(bool $isActive): self
+    public function setStatus(String $currentStatus)
     {
-        $this->isActive = $isActive;
-
-        return $this;
+        $this->status = $currentStatus;
     }
 }
