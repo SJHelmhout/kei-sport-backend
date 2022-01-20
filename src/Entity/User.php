@@ -21,6 +21,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     itemOperations={
  *          "get"={"security"="is_granted('get_item', object)"},
  *          "patch"={"security"="is_granted('patch', object)"},
+ *          "delete",
  *     },
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)

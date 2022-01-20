@@ -15,12 +15,16 @@ use App\Controller\LeaveSession;
 use App\Controller\InitSession;
 use App\Controller\StartSession;
 use App\Controller\EndSession;
+use App\Controller\CreateSession;
 
 /**
  * @ApiResource(
  *     collectionOperations={
  *          "get",
- *          "post",
+ *          "post"={
+ *              "controller"=CreateSession::class,
+ *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
+ *          },
  *          "find_my_session"={
  *              "method"="GET",
  *              "path"="/sessions/find_my_session",
@@ -67,6 +71,7 @@ use App\Controller\EndSession;
  *              "controller"=InitSession::class,
  *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
  *          },
+ *          "delete",
  *     },
  * )
  * @ORM\Entity(repositoryClass=SessionRepository::class)
@@ -102,9 +107,9 @@ class Session
 
     /**
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="sessions")
-     * @ORM\JoinColumn()
+     * @ORM\JoinColumn(nullable=true)
      */
-    private Workout $workout;
+    private ?Workout $workout;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -121,7 +126,7 @@ class Session
         return $this->id;
     }
 
-    public function getWorkout(): Workout
+    public function getWorkout(): ?Workout
     {
         return $this->workout;
     }
@@ -186,8 +191,8 @@ class Session
         return $this->status;
     }
 
-    public function setStatus(String $currentStatus)
+    public function setStatus(string $status, $context = [])
     {
-        $this->status = $currentStatus;
+        $this->status = $status;
     }
 }
