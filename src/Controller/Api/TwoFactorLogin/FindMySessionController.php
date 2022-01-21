@@ -20,6 +20,7 @@ class FindMySessionController
         $this->security = $security;
     }
 
+    //TODO: Refactor where clause in DQL statement
     public function __invoke(): JsonResponse
     {
         $user = $this->security->getUser();
@@ -27,7 +28,7 @@ class FindMySessionController
             ->getRepository(Session::class)
             ->createQueryBuilder('o')
             ->select("o.id")
-            ->where("o.isActive = 1")
+            ->where("o.status = 'session_created'")
             ->innerJoin('o.users', 'u', 'WITH', 'u.id = :userParameterName')
             ->setParameter('userParameterName', $user)
         ;

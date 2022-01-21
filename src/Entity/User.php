@@ -21,6 +21,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     itemOperations={
  *          "get"={"security"="is_granted('get_item', object)"},
  *          "patch"={"security"="is_granted('patch', object)"},
+ *          "delete",
  *     },
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -44,6 +45,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="json")
+     * @Groups({"user:read"})
      */
     private array $roles = [];
 

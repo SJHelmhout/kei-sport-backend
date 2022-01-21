@@ -1,0 +1,27 @@
+framework:
+    workflows:
+        session_status:
+            type: 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'method'
+                property: 'status'
+            supports:
+                - App\Entity\Session
+            initial_marking: session_created
+            places:
+                - session_created
+                - session_waiting_for_participants
+                - session_started
+                - session_finished
+            transitions:
+                session_init:
+                    from: session_created
+                    to: session_waiting_for_participants
+                start_session:
+                    from: session_waiting_for_participants
+                    to: session_started
+                end_session:
+                    from: session_started
+                    to: session_finished
