@@ -15,15 +15,14 @@ class InitSession
         $this->registry = $registry;
     }
 
-    public function __invoke(Session $session): Session
+    public function __invoke(Session $data): Session
     {
-        $workflow = $this->registry->get($session);
-//        $workflow->can($session, Session::STATUS_SESSION_FINISHED);
+        $workflow = $this->registry->get($data);
 
-        if ($session->getStatus() !== Session::STATUS_SESSION_CREATED){
-            throw new BadRequestHttpException("This session has not been created yet");
+        if ($data->getStatus() !== Session::STATUS_SESSION_CREATED){
+            throw new BadRequestHttpException("This session has not been created yet or has already been initialized");
         }
-        $session->setCurrentStatus(Session::STATUS_SESSION_WAITING_FOR_PARTICIPANTS);
-        return $session;
+        $data->setStatus(Session::STATUS_SESSION_WAITING_FOR_PARTICIPANTS);
+        return $data;
     }
 }

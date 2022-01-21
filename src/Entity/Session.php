@@ -45,7 +45,6 @@ use App\Controller\CreateSession;
  *              "path"="/sessions/{id}/join",
  *              "controller"=JoinSession::class,
  *              "security"="is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')",
- *              "read"=false,
  *          },
  *          "leave_session"={
  *              "method"="PATCH",
@@ -88,7 +87,7 @@ class Session
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private ?int $id;
+    private ?int $id = null;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -109,12 +108,12 @@ class Session
      * @ORM\ManyToOne(targetEntity=Workout::class, inversedBy="sessions")
      * @ORM\JoinColumn(nullable=true)
      */
-    private ?Workout $workout;
+    private ?Workout $workout = null;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private String $status;
+    private String $status = '';
     
     public function __construct()
     {

@@ -47,10 +47,10 @@ class CreateSession
         } catch (Exception $e){
             $this->entityManager->rollback();
 
-            return new JsonResponse(["code" => 500], 500);
+            return new JsonResponse($e->getMessage(), 500);
         }
 
-        return new JsonResponse(["code" => 201], 201);
+        return new JsonResponse("Session created.", 201);
     }
 
 }

@@ -28,7 +28,7 @@ class FindMySessionController
             ->getRepository(Session::class)
             ->createQueryBuilder('o')
             ->select("o.id")
-            ->where("o.isActive = 1")
+            ->where("o.status = 'session_created'")
             ->innerJoin('o.users', 'u', 'WITH', 'u.id = :userParameterName')
             ->setParameter('userParameterName', $user)
         ;

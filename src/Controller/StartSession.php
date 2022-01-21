@@ -15,15 +15,15 @@ class StartSession
         $this->registry = $registry;
     }
 
-    public function __invoke(Session $session): Session
+    public function __invoke(Session $data): Session
     {
-        $workflow = $this->registry->get($session);
+        $workflow = $this->registry->get($data);
 //        $workflow->can($session, Session::STATUS_SESSION_FINISHED);
 
-        if ($session->getStatus() !== Session::STATUS_SESSION_WAITING_FOR_PARTICIPANTS){
+        if ($data->getStatus() !== Session::STATUS_SESSION_WAITING_FOR_PARTICIPANTS){
             throw new BadRequestHttpException("This session has already been started / has not been activated yet / or is already finished.");
         }
-        $session->setCurrentStatus(Session::STATUS_SESSION_STARTED);
-        return $session;
+        $data->setStatus(Session::STATUS_SESSION_STARTED);
+        return $data;
     }
 }

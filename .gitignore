@@ -16,4 +16,4 @@
 
 node_modules/
 
-/log/capistrano.log
+/log/

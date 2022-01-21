@@ -15,14 +15,14 @@ class EndSession
         $this->registry = $registry;
     }
 
-    public function __invoke(Session $session): Session
+    public function __invoke(Session $data): Session
     {
-        $workflow = $this->registry->get($session);
+        $workflow = $this->registry->get($data);
 
-        if ($session->getStatus() !== Session::STATUS_SESSION_STARTED){
+        if ($data->getStatus() !== Session::STATUS_SESSION_STARTED){
             throw new BadRequestHttpException("This session has not been started or is already finished.");
         }
-        $session->setCurrentStatus(Session::STATUS_SESSION_FINISHED);
-        return $session;
+        $data->setStatus(Session::STATUS_SESSION_FINISHED);
+        return $data;
     }
 }

@@ -25,7 +25,7 @@ class CurrentActiveSessionsController
             ->getRepository(Session::class)
             ->createQueryBuilder('o')
             ->select(["COUNT(o.workout) as amount"])
-            ->where("o.isActive = 1")
+            ->where("o.status = 'session_started'")
         ;
         $result = $queryBuilder->getQuery()->getResult();
         return new JsonResponse($result);
