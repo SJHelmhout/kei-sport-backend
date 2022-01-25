@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api\SessionUtilities;
 
 use App\Entity\Session;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;

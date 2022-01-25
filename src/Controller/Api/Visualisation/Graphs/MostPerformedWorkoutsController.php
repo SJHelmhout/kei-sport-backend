@@ -23,10 +23,8 @@ class MostPerformedWorkoutsController
     }
     public function __invoke(): JsonResponse
     {
-        //TODO: Verstuur ook de workout id mee en bak deze in de chart in.
         $labels = [];
         $chartData = [];
-        //select workout_log.workout_id, COUNT(*) from workout_log where workout_log.user_id = 4 GROUP BY workout_log.workout_id;
         $queryBuilder = $this->entityManager
             ->getRepository(WorkoutLog::class)
             ->createQueryBuilder('log')

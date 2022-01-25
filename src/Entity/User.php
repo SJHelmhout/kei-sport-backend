@@ -20,7 +20,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     },
  *     itemOperations={
  *          "get"={"security"="is_granted('get_item', object)"},
- *          "patch"={"security"="is_granted('patch', object)"},
  *          "delete",
  *     },
  * )
@@ -28,7 +27,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    //TODO: Velden die niet opgehaald mogen worden bij GET-requests niet meegeven.
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

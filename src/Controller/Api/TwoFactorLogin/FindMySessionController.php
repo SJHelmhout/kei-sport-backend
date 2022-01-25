@@ -20,7 +20,6 @@ class FindMySessionController
         $this->security = $security;
     }
 
-    //TODO: Refactor where clause in DQL statement
     public function __invoke(): JsonResponse
     {
         $user = $this->security->getUser();

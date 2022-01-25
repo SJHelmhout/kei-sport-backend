@@ -10,13 +10,12 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Controller\Api\TwoFactorLogin\FindMySessionController;
 use App\Controller\Api\Visualisation\Graphs\CurrentActiveSessionsController;
-use App\Controller\JoinSession;
-use App\Controller\LeaveSession;
-use App\Controller\InitSession;
-use App\Controller\StartSession;
-use App\Controller\EndSession;
-use App\Controller\CreateSession;
-
+use App\Controller\Api\SessionUtilities\JoinSession;
+use App\Controller\Api\SessionUtilities\LeaveSession;
+use App\Controller\Api\SessionUtilities\CreateSession;
+use App\Controller\Api\SessionUtilities\InitSession;
+use App\Controller\Api\SessionUtilities\StartSession;
+use App\Controller\Api\SessionUtilities\EndSession;
 /**
  * @ApiResource(
  *     collectionOperations={

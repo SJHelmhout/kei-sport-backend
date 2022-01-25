@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Api\SessionUtilities;
 
 use App\Entity\Session;
 use App\Entity\User;
-use App\Repository\SessionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Security\Core\Security;
 

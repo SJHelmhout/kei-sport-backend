@@ -27,3 +27,8 @@ generate_twoFactorCode:
   path: /api/generate_2fa
   methods: ['GET']
   controller: App\Controller\Api\TwoFactorLogin\CodeGeneratorController
+
+addWorkout:
+  path: /api/addWorkout
+  methods: ['POST']
+  controller: App\Controller\Api\ChooseWorkout

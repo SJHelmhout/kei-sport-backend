@@ -60,3 +60,7 @@ services:
     App\OpenApi\FindMySessionDecorator:
         decorates: 'api_platform.openapi.factory'
         arguments: [ '@.inner' ]
+
+    App\OpenApi\ChooseWorkoutDecorator:
+        decorates: 'api_platform.openapi.factory'
+        arguments: [ '@.inner' ]
