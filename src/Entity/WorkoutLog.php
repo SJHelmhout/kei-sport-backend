@@ -13,6 +13,7 @@ use App\Controller\Api\Visualisation\Graphs\MostPerformedWorkoutsController;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\Api\Visualisation\Graphs\WorkoutProgressController;
 use App\Controller\Api\Visualisation\Graphs\AdminTopFiveWorkoutsController;
+use App\Controller\Api\Visualisation\Graphs\TotalWorkoutsController;
 
 /**
  * @ApiResource(
@@ -38,7 +39,13 @@ use App\Controller\Api\Visualisation\Graphs\AdminTopFiveWorkoutsController;
  *              "path"="/workout_logs/top_five_workouts",
  *              "controller"=AdminTopFiveWorkoutsController::class,
  *              "security"="is_granted('ROLE_ADMIN')",
- *          }
+ *          },
+ *          "totalWorkouts"={
+ *              "method"="GET",
+ *              "path"="/workout_logs/totalWorkouts",
+ *              "controller"=TotalWorkoutsController::class,
+ *              "security"="is_granted('ROLE_ADMIN')",
+ *          },
  *     },
  *     itemOperations={
  *          "get",
